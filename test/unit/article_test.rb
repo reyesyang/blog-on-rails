@@ -1,8 +1,11 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  test "article attributes must not be empty" do
+    article = Article.new
+		assert article.invalid?
+		assert article.errors[:title].any?
+		assert article.errors[:summary].any?
+		assert article.errors[:content].any?
   end
 end

@@ -1,8 +1,10 @@
 require 'test_helper'
 
 class CommentTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  test "comment attributes must not be empty" do
+		comment = Comment.new
+		assert comment.invalid?
+		assert comment.errors[:commenter].any?
+    assert comment.errors[:content].any?
   end
 end

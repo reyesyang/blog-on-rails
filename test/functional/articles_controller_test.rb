@@ -5,7 +5,6 @@ class ArticlesControllerTest < ActionController::TestCase
     @article = articles(:rubyonrails1)
 		@update = {
 			:title => 'update title',
-			:tags => 'tag1;tag2',
 			:summary => 'update summary test',
 			:content => 'upate content test'
 		}

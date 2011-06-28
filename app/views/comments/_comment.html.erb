@@ -1,0 +1,20 @@
+<p>
+	<b>Commenter:</b>
+	<%= comment.commenter %>
+</p>
+
+<p>
+	<b>Content:</b>
+	<%= comment.content %>
+</p>
+
+<p>
+	<b>Post date:</b>
+	<%= comment.created_at %>
+</p>
+
+<p>
+	<%= link_to 'Delete Comment', [comment.article, comment],
+		:confirm => 'Are you sure?',
+		:method => :delete %>
+</p>

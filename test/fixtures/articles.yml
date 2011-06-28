@@ -1,13 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  title: MyString
-  tags: MyText
-  summary: MyText
-  content: MyText
+rubyonrails1:
+  title: Ruby on rails study 1
+  tags: ruby;rails;web
+  summary: Some mark when I study ruby on rails 2
+  content: Ruby on rails study content 2
 
-two:
-  title: MyString
-  tags: MyText
-  summary: MyText
-  content: MyText
+rubyonrails2:
+  title: Ruby on rails study 2
+  tags: ruby;rails;web
+  summary: Some mark when I study ruby on rails 2
+  content: Ruby on rails study content 2

@@ -15,6 +15,11 @@
   <%= @article.content %>
 </p>
 
+<p>
+	<b>Tags:</b>
+	<%= @article.tags.map { |t| t.name}.join(", ") %>
+</p>
+
 <h2>Comments</h2>
 <%= render :partial => "comments/comment",
 	:collection => @article.comments %>

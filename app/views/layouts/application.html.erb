@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Blog</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
+  <head>
+    <title>
+      <%= @page_title || "Blog" %>
+    </title>
+    <%= stylesheet_link_tag :all %>
+    <%= csrf_meta_tag %>
+  </head>
+  <body>
+    <header></header>
+    
+    <nav>
+      <a href="http://reyesyang.info">Home</a>
+      <a href="http://reyesyang.info/acknowledge">Acknowledge</a>
+      <a href="http://reyesyang.info/me">Me</a>
+    </nav>
+    
+    <section id="articles">
+      <%= yield %>
+    </section>
+    
+    <aside>
+    This is aside part
+    </aside>
+    
+    <div class="clear"></div>
 
-<%= yield %>
-
-</body>
+    <footer>
+      This is footer
+    </footer>
+    <%= javascript_include_tag :defaults %>
+  </body>
 </html>

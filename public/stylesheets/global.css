@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* */
+body {
+  width: 80%;
+  min-width: 960px;
+  margin: 0 auto;
+}
+
+header {
+  height: 200px;
+  background-image: url("/images/logo.jpg");
+  background-repeat: no-repeat;
+}
+
+nav {
+  height: 40px;
+  border-width: 3px 0;
+  border-style: double;
+  margin: 10px 0;
+  padding: 0 10px;
+}
+
+section {
+  width: 71%;
+  float: left;
+  margin: 0 0 10px 0;
+  padding: 0 10px;
+  border-width: 0 1px 0 0;
+  border-style: solid;
+}
+
+article {
+	border-width: 1px 0 0 0;
+	border-style: solid;
+	border-color: silver;
+	padding: 10px 0;
+}
+
+article header {
+	height: 40px;
+	background-image: none;
+}
+
+article footer {
+	border-width: 0;
+}
+
+aside {
+  width: 25%;
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
+
+footer {
+  height: 20px;
+  border-width: 1px 0 0 0;
+  border-style: solid;
+}

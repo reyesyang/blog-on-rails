@@ -14,13 +14,16 @@ header {
   height: 200px;
   background-image: url("/images/logo.jpg");
   background-repeat: no-repeat;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  margin: 0 0 10px 0;
 }
 
 nav {
   height: 40px;
-  border-width: 3px 0;
-  border-style: double;
-  margin: 10px 0;
+  float: right;
+  border-width: 0 1px 1px 1px;
+  border-style: solid;
   padding: 0 10px;
 }
 
@@ -41,13 +44,66 @@ article {
 }
 
 article header {
-	height: 40px;
+	height: auto;
 	background-image: none;
+  border-width: 0;
+}
+
+.tags {
+	margin-left: 40px;
+}
+
+.operation {
+	float: right
+}
+
+#article_content {
+	margin: 0 0 20px 0;
+}
+
+#comments {
+	width: 100%;
+	margin: 0;
+	padding: 0 0 20px 0;
+	border-width: 0;
+}
+
+#comments h2 {
+	border-width: 0 0 1px 0;
+	border-style: solid;
+	border-color: silver;
+}
+
+.comment {
+	border-width: 0 0 1px 0;
+	border-style: solid;
+	border-color: silver;
+	padding: 10px 0;
+}
+
+.commenter_logo {
+	width: 60px;
+	height: 60px;
+	float: left;
+	margin: 0px 30px 10px 0;
+	border-width: 1px;
+	border-color: silver;
+	border-style: solid;
+}
+
+.comment_content {
 }
 
 article footer {
 	border-width: 0;
 }
+
+/*article footer a {
+  display: block;
+  float: right;
+  margin: 0 5px;
+  padding: 0 5px;
+}*/
 
 aside {
   width: 25%;

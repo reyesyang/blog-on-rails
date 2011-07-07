@@ -3,18 +3,24 @@
   <article>
 		<header>
     	<h2><%= article.title %></h2>
-			<small>
-				<%= article.created_at %>
+			<small class="created_at">
+				Posted at: <%= article.created_at %>
+			</small>
+			<small class="tags">
+				Tags: <%= join_tags article %>
 			</small>
 		</header>
 
-    <p><%= article.summary %></p>
+    <p><%= sanitize article.summary %></p>
     <%= link_to '>>More', article %>
 		<br/>
     
 		<footer>
-			<%= link_to 'Edit', edit_article_path(article) %>
-    	<%= link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete %>
+			<small class="operation">
+				<%= link_to 'Edit', edit_article_path(article) %>
+				<%= link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete %>
+			</small>
 		</footer>
   </article>
 <% end %>
+<%= will_paginate @articles %>

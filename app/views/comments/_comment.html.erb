@@ -1,22 +1,23 @@
 <div class="comment">
 	<div class="commenter_logo">
 		<img src="/images/commenter.jpg" alt="<%= comment.commenter%>" width="40" height="40"/>
-		<span><%= comment.commenter %></spam>
 	</div>
 
 	<header>
-		<small>Commented at: <%= comment.created_at %></small>
+			<span class="commenter">
+				<%= comment.commenter %>
+			</span>
+				commented at: <%= comment.created_at %>
 	</header>
 
 	<div class="comment_content">
-		<%= comment.content %>
+		<%= sanitize comment.content %>
 	</div>
 
-	<footer>
-		<small class="operation">
+	<footer class="operation">
 			<%= link_to 'Delete', [comment.article, comment],
 				:confirm => 'Are you sure?',
 				:method => :delete %>
-		</small>
 	</footer>
+	<div class="clear"></div>
 </div>

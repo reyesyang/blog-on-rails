@@ -3,16 +3,16 @@
 
 	<header>
 		<h2><%= @article.title %></h2>
-		<small class="created_at">
+		<span class="created_at">
 			Post at: <%= @article.created_at %>
-		</small>
-		<small class="tags">
+		</span>
+		<span class="tags">
 		  Tags:	<%= join_tags @article %>
-		</small>
-		<small class="operation">
+		</span>
+		<span class="operation">
 			<%= link_to 'Edit', edit_article_path(@article) %>
 			<%= link_to 'Back', articles_path %>
-		</small>
+		</span>
 	</header>
 
 	<div id="article_content">

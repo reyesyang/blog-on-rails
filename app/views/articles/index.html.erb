@@ -2,25 +2,24 @@
 <% @articles.each do |article| %>
   <article>
 		<header>
-    	<h2><%= article.title %></h2>
-			<small class="created_at">
+    	<h2><%= link_to article.title, article %></h2>
+			<span class="created_at">
 				Posted at: <%= article.created_at %>
-			</small>
-			<small class="tags">
+			</span>
+			<span class="tags">
 				Tags: <%= join_tags article %>
-			</small>
+			</span>
 		</header>
 
     <p><%= sanitize article.summary %></p>
     <%= link_to '>>More', article %>
 		<br/>
     
-		<footer>
-			<small class="operation">
+		<footer class="operation">
 				<%= link_to 'Edit', edit_article_path(article) %>
 				<%= link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete %>
-			</small>
 		</footer>
+		<div class="clear"></div>
   </article>
 <% end %>
 <%= will_paginate @articles %>

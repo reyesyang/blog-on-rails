@@ -1,4 +1,14 @@
 Blog::Application.routes.draw do
+  get "admin/index"
+
+  get "sessions/new"
+
+  get "sessions/create"
+
+  get "sessions/destroy"
+
+  resources :users
+
   resources :articles do
 		resources :comments
 	end

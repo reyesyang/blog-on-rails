@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  skip_before_filter :authorize, :only => [:index, :show]
   # GET /articles
   # GET /articles.xml
   def index

@@ -9,14 +9,17 @@
   </head>
   <body>
     <header>
-			<nav>
-				<a href="/">Home</a>
-				<a href="/acknowledge">Acknowledge</a>
-				<a href="/me">Me</a>
-			</nav>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/acknowledge">Acknowledge</a>
+        <a href="/me">Me</a>
+        <% if session[:user_id] %>
+          <%= link_to 'Logout', logout_path, :confirm => 'Are you sure?', :method => :delete %>
+        <% end %>
+      </nav> 
     </header>
-
-    <section id="articles">
+    
+    <section>
       <%= yield %>
     </section>
     

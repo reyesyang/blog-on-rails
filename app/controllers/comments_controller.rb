@@ -1,18 +1,16 @@
 class CommentsController < ApplicationController
-	def create
-		@article = Article.find(params[:article_id])
-		@comment = @article.comments.create(params[:comment])
-		if @comment.valid?
-			redirect_to article_path(@article)
-		else
-			render :action => "articles/show"
-		end
-	end
+  skip_before_filter :authorize, :only => :create
 
-	def destroy
-		@article = Article.find(params[:article_id])
-		@comment = @article.comments.find(params[:id])
-		@comment.destroy
-		redirect_to article_path(@article)
-	end
+  def create
+    @article = Article.find(params[:article_id])
+    @comment = @article.comments.create(params[:comment])
+    redirect_to article_path(@article)
+  end
+
+  def destroy
+    @article = Article.find(params[:article_id])
+    @comment = @article.comments.find(params[:id])
+    @comment.destroy
+    redirect_to article_path(@article)
+  end
 end

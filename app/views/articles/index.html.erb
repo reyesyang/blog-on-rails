@@ -1,4 +1,7 @@
-<%= link_to 'New Article', new_article_path %>
+<% if session[:user_id] %>
+  <%= link_to 'New Article', new_article_path %>
+<% end %>
+
 <% @articles.each do |article| %>
   <article>
 		<header>
@@ -8,17 +11,23 @@
 			</span>
 			<span class="tags">
 				Tags: <%= join_tags article %>
-			</span>
+      </span>
+      <% if session[:user_id] %>
+        <footer class="operation">
+          <%= link_to 'Edit', edit_article_path(article) %>
+          <%= link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete %>
+        </footer>
+      <% end %>
 		</header>
 
-    <p><%= sanitize article.summary %></p>
-    <%= link_to '>>More', article %>
+    <div class="article_summary:">
+      <%= sanitize article.summary %>
+    </div>
+    <span class="operation">
+      <%= link_to '>>More', article %>
+    </span>
 		<br/>
-    
-		<footer class="operation">
-				<%= link_to 'Edit', edit_article_path(article) %>
-				<%= link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete %>
-		</footer>
+
 		<div class="clear"></div>
   </article>
 <% end %>

@@ -6,18 +6,23 @@
 	<header>
 			<span class="commenter">
 				<%= comment.commenter %>
-			</span>
-				commented at: <%= comment.created_at %>
+      </span>
+      <span class="created_at">
+        commented at: <%= comment.created_at %>
+      </span>
+      <% if session[:user_id] %>
+        <span class="operation">
+          <%= link_to 'Delete', [comment.article, comment],
+            :confirm => 'Are you sure?',
+            :method => :delete %>
+        </span>
+      <% end %>
 	</header>
 
 	<div class="comment_content">
 		<%= sanitize comment.content %>
 	</div>
 
-	<footer class="operation">
-			<%= link_to 'Delete', [comment.article, comment],
-				:confirm => 'Are you sure?',
-				:method => :delete %>
-	</footer>
+	
 	<div class="clear"></div>
 </div>

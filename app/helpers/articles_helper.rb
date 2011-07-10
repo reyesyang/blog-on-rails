@@ -1,5 +1,5 @@
 module ArticlesHelper
-	def join_tags(article)
-		article.tags.map { |t| t.name }.join(", ")
-	end
+  def join_tags(article)
+    article.tags.map { |t| "test" + t.name }.join("; ")
+  end
 end

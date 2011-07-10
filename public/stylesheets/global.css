@@ -40,6 +40,7 @@ article {
 	border-width: 1px 0 0 0;
 	border-style: solid;
 	border-color: silver;
+  /*margin: 0 0 10px 0;*/
 	padding: 10px 0 0 0;
 }
 
@@ -82,7 +83,7 @@ article header {
 	border-width: 0 0 1px 0;
 	border-style: solid;
 	border-color: silver;
-	padding: 10px 0 0 0;
+	padding: 10px 0 10px 0;
 }
 
 .commenter_logo {
@@ -91,12 +92,10 @@ article header {
 }
 
 .comment header {
-	font-size: 0.8em;
 	margin-left: 60px;
 }
 
 .commenter {
-  font-size: 1.2em;
 	font-weight: bold;
   margin-right: 10px;
 }

@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_filter :authorize
+	before_filter :get_tags
   protect_from_forgery
 
   protected
@@ -8,4 +9,8 @@ class ApplicationController < ActionController::Base
         redirect_to login_url, :notice => "Please login as admin"
       end
     end
+
+		def get_tags
+			@tags = Tag.all
+		end
 end

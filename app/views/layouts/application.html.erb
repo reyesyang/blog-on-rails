@@ -24,8 +24,10 @@
     </section>
     
     <aside>
-    This is aside part
-    </aside>
+    	<% @tags.each do |tag| %>
+				<p> <%= tag.name %> </p>
+			<% end %>
+		</aside>
     
     <div class="clear"></div>
 

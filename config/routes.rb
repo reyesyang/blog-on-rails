@@ -1,5 +1,6 @@
 Blog::Application.routes.draw do
   get "admin" => "admin#index"
+	get "articles/tag/:tag_id" => "articles#get_articles_by_tag_id"
 
   controller :sessions do
     get 'login' => :new

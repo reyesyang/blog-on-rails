@@ -4,10 +4,10 @@
 	<header>
 		<h2><%= @article.title %></h2>
 		<span class="created_at">
-			Post at: <%= @article.created_at %>
+			Post at: <%= @article.created_at.localtime.strftime('%D %T') %>
 		</span>
 		<span class="tags">
-		  Tags:	<%= join_tags @article %>
+		  Tags:	<%= sanitize join_tags @article %>
     </span>
     <% if session[:user_id] %>
       <span class="operation">
@@ -24,7 +24,8 @@
 	<section id="comments">
 		<h2>Comments</h2>
 		<%= render :partial => "comments/comment",
-			:collection => @article.comments %>
+			:collection => @comments %>
+		<%= will_paginate @comments %>
 	</section>
 
 	<div id="comment_form">

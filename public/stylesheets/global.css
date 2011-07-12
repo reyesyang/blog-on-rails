@@ -27,7 +27,7 @@ nav {
   padding: 0 10px;
 }
 
-section {
+#main_content {
   width: 71%;
   float: left;
   margin: 0 0 10px 0;
@@ -130,6 +130,15 @@ article footer {
 aside {
   width: 25%;
   float: right;
+}
+
+#aside_tags h2 {
+	margin: 0 0 10px 0;
+}
+
+.aside_tag {
+	margin: 5px 0 0 0;
+	padding: 2px;
 }
 
 .clear {

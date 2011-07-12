@@ -19,14 +19,22 @@
       </nav> 
     </header>
     
-    <section>
+    <section id="main_content">
       <%= yield %>
     </section>
     
     <aside>
-    	<% @tags.each do |tag| %>
-				<p> <%= tag.name %> </p>
-			<% end %>
+			<section id="aside_tags"/>
+				<h2>Tags:</h2>
+				<% if @tags %>
+					<% @tags.each do |tag| %>
+						<%= link_to tag.name, '/articles/tag/'+ tag.id.to_s, :class=>'aside_tag' %> x <%= tag.articles.count %>
+						<br/>
+					<% end %>
+				<% else %>
+					No more tags now!
+				<% end %>
+			</section>
 		</aside>
     
     <div class="clear"></div>

@@ -62,13 +62,13 @@ article header {
 	font-size: 0.8em;
 }
 
-#article_content {
+/*#article_content {
 	margin: 0 0 20px 0;
-}
+}*/
 
 /* article form */
 .article_field {
-	width: 90%;
+	width: 99%;
 }
 
 #article_summary {
@@ -82,8 +82,7 @@ article header {
 /* article show comment */
 #comments {
 	width: 100%;
-	margin: 0;
-	padding: 0 0 20px 0;
+	margin: 20px 0;
 	border-width: 0;
 }
 
@@ -126,6 +125,11 @@ article header {
 	font-size: 0.8em;
 }
 
+#comment_content {
+	width: 99%;
+	height: 60px;
+}
+
 .clear {
 	clear: both;
 }
@@ -159,8 +163,19 @@ aside {
   clear: both;
 }
 
+/* footer */
 footer {
   height: 20px;
   border-width: 1px 0 0 0;
   border-style: solid;
+	padding: 10px;
+	text-align: center;
+}
+
+#cc {
+	text-decoration: none;
+}
+
+#cc_icon {
+	margin: 0 0 -3px 0;
 }

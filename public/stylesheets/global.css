@@ -66,6 +66,20 @@ article header {
 	margin: 0 0 20px 0;
 }
 
+/* article form */
+.article_field {
+	width: 90%;
+}
+
+#article_summary {
+	height: 100px;
+}
+
+#article_content {
+	height: 400px;
+}
+
+/* article show comment */
 #comments {
 	width: 100%;
 	margin: 0;

@@ -64,7 +64,8 @@ class ArticlesController < ApplicationController
   # PUT /articles/1.xml
   def update
     @article = Article.find(params[:id])
-		params[:article][:tags_attributes].each do |tag_array|
+		article_hash = params[:article]
+		article_hash[:tags_attributes].each do |tag_array|
 			tag_hash = tag_array[1]
 			tag = Tag.find_by_name(tag_hash[:name])
 			if tag
@@ -82,6 +83,10 @@ class ArticlesController < ApplicationController
 				end
 			end
 		end
+		
+		@article.title = article_hash[:title]
+		@article.summary = article_hash[:summary]
+		@article.content = article_hash[:content]
 
     respond_to do |format|
       #if @article.update_attributes(params[:article])

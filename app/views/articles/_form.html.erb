@@ -14,20 +14,19 @@
 
   <div class="field">
     <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :class => 'article_field'%>
   </div>
   <div class="field">
     <%= f.label :summary %><br />
-    <%= f.text_area :summary, :size => "50x5"%>
+    <%= f.text_area :summary, :class => 'article_field'%>
   </div>
 	
-	<h2>Tags</h2>
 	<%= render :partial => 'tags/form',
 		:locals => {:form => f} %>
 
   <div class="field">
     <%= f.label :content %><br />
-    <%= f.text_area :content, :size => "50x20" %>
+    <%= f.text_area :content, :class => 'article_field' %>
   </div>
 		
   <div class="actions">

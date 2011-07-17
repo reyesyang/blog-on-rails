@@ -4,7 +4,7 @@
 	<header>
 		<h2><%= @article.title %></h2>
 		<span class="created_at">
-			Post at: <%= @article.created_at.localtime.strftime('%D %T') %>
+			Post at: <%= @article.created_at.in_time_zone(+8.hours).strftime('%D %T') %>
 		</span>
 		<span class="tags">
 		  Tags:	<%= sanitize join_tags @article %>

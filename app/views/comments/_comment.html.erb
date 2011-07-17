@@ -8,7 +8,7 @@
 				<%= comment.commenter %>
       </span>
       <span class="created_at">
-        commented at: <%= comment.created_at %>
+        commented at: <%= comment.created_at.in_time_zone(+8.hours).strftime('%D %T') %>
       </span>
       <% if session[:user_id] %>
         <span class="operation">

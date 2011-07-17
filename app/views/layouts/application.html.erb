@@ -5,6 +5,8 @@
       <%= @page_title || "Blog" %>
     </title>
     <%= stylesheet_link_tag :all %>
+		<%= stylesheet_link_tag stylesheet_path('/markitup/skins/markitup/style.css') %>
+		<%= stylesheet_link_tag stylesheet_path('/markitup/sets/default/style.css') %>
     <%= csrf_meta_tag %>
   </head>
   <body>
@@ -52,6 +54,13 @@
 				本博客当前版本11.07.13.01, &copy; 2011 reyesyang.info
 			</div>
 		</footer>
-    <%= javascript_include_tag :defaults %>
+    <%= javascript_include_tag :all %>
+		<%= javascript_include_tag javascript_path('/markitup/sets/default/set.js') %>
+		<%= javascript_include_tag javascript_path('/markitup/jquery.markitup.js') %>
+		<script type="text/javascript" >
+		  $(document).ready(function() {
+				$(".markitup_setting").markItUp(fullSettings);
+			});
+		</script>
   </body>
 </html>

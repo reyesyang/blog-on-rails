@@ -67,10 +67,6 @@ article header {
 }*/
 
 /* article form */
-.article_field {
-	width: 99%;
-}
-
 #article_summary {
 	height: 100px;
 }
@@ -126,7 +122,6 @@ article header {
 }
 
 #comment_content {
-	width: 99%;
 	height: 60px;
 }
 

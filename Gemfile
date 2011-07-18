@@ -33,3 +33,5 @@ gem 'require_relative'
 group :production do
 	gem 'mysql'
 end
+
+gem 'jquery-rails', '>= 1.0.12'

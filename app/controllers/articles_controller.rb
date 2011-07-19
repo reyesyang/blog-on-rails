@@ -47,7 +47,22 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.xml
   def create
-    @article = Article.new(params[:article])
+    #@article = Article.new(params[:article]
+    article_hash = params[:article]
+    @article = Article.new(:title => article_hash[:title],
+                           :summary => article_hash[:summary],
+                           :content => article_hash[:content])
+    article_hash[:tags_attributes].each do |tag_array|
+			tag_hash = tag_array[1]
+			tag = Tag.find_by_name(tag_hash[:name])
+			if tag
+					@article.tags << tag
+			else
+				if tag_hash[:name] != ""
+					@article.tags.build(:name => tag_hash[:name])
+				end
+			end
+		end
 
     respond_to do |format|
       if @article.save
@@ -72,14 +87,15 @@ class ArticlesController < ApplicationController
 				#debugger
 				if tag_hash[:_destroy] == "1"
 					@article.tags.delete tag
+          tag.reload
+          tag.destroy unless tag.articles.count > 0
 				else
 					exist = @article.tags.exists?(tag)
 					@article.tags << tag unless exist
 				end
 			else
 				if tag_hash[:name] != ""
-					tag = Tag.create(:name => tag_hash[:name])
-					@article.tags << tag
+					@article.tags.build(:name => tag_hash[:name])
 				end
 			end
 		end
@@ -104,6 +120,11 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1.xml
   def destroy
     @article = Article.find(params[:id])
+    tags = @article.tags
+    tags.each do |tag|
+      tag.destroy unless tag.articles.count > 1
+    end
+
     @article.destroy
 
     respond_to do |format|

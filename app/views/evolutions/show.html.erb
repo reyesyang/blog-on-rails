@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Licence:</b>
+  <%= @evolution.licence %>
+</p>
+
+<p>
+  <b>Change:</b>
+  <%= @evolution.change %>
+</p>
+
+
+<%= link_to 'Edit', edit_evolution_path(@evolution) %> |
+<%= link_to 'Back', evolutions_path %>

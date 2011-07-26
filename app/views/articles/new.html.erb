@@ -1,5 +1,7 @@
-<h1>New article</h1>
-
+<h1><%= t 'create_article' %></h1>
+<span class='operation'>
+  <%= link_to 'Back', articles_path %>
+</span>
 <%= render 'form' %>
 
-<%= link_to 'Back', articles_path %>
+

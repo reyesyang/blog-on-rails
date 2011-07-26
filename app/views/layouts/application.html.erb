@@ -12,11 +12,11 @@
   <body>
     <header>
       <nav>
-        <a href="/">Home</a>
-        <a href="/acknowledge">Acknowledge</a>
-        <a href="/me">Me</a>
+        <a href="/"><%= t 'home'%></a>
+        <a href="/acknowledge"><%= t 'acknowledge' %></a>
+        <a href="/about"><%= t 'about' %></a>
         <% if session[:user_id] %>
-          <%= link_to 'Logout', logout_path, :confirm => 'Are you sure?', :method => :delete %>
+          <%= link_to t('logout'), logout_path, :confirm => 'Are you sure?', :method => :delete %>
         <% end %>
       </nav> 
     </header>
@@ -27,7 +27,7 @@
     
     <aside>
 			<section id="aside_tags"/>
-				<h2>Tags:</h2>
+        <h2><%= t 'tags' %></h2>
 				<% if @tags %>
 					<% @tags.each do |tag| %>
 						<%= link_to tag.name, '/articles/tag/'+ tag.id.to_s, :class=>'aside_tag' %> x <%= tag.articles.count %>
@@ -43,15 +43,15 @@
 
     <footer>
 		  <div id='cc'>
-				除特别说明外本站内容均采用
-				<a rel="license" href="http://creativecommons.org/licenses/by-sa/2.5/cn/">
-					<img alt="知识共享许可协议" id="cc_icon" src="http://i.creativecommons.org/l/by-sa/2.5/cn/80x15.png">
-					<strong>知识共享署名-相同方式共享 2.5 中国大陆许可协议</strong>
+        <%= t 'licence_prefix' %>
+        <a rel="license" href="<%= t 'licence_link' %>" target='_blank'>
+					<img alt="知识共享许可协议" id="cc_icon" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png">
+          <strong><%= t 'licence' %></strong>
 				</a>
-				进行许可。
-			</div>
+        <%= t 'licence_suffix' %>
+      </div>
 			<div id='copy'>
-				本博客当前版本11.07.17.01, &copy; 2011 reyesyang.info
+			  <%= t 'current_version' %>11.07.17.01, &copy; 2011 <%= t 'copy_right' %>
 			</div>
 		</footer>
 		<%= javascript_include_tag "jquery.min", "jquery_ujs" %>

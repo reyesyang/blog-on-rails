@@ -1,0 +1,25 @@
+<%= form_for(@evolution) do |f| %>
+  <% if @evolution.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@evolution.errors.count, "error") %> prohibited this evolution from being saved:</h2>
+
+      <ul>
+      <% @evolution.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :change %><br />
+    <%= f.text_area :change, :class => 'markitup_setting' %>
+  </div>
+  <div class="field">
+    <%= f.label :version %><br />
+    <%= f.text_field :version %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -13,11 +13,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label t('title') %><br />
     <%= f.text_field :title, :class => 'article_field'%>
   </div>
   <div class="field">
-    <%= f.label :summary %><br />
+    <%= f.label t('summary') %><br />
     <%= f.text_area :summary, :class => 'article_field markitup_setting'%>
   </div>
 	
@@ -25,11 +25,11 @@
 		:locals => {:form => f} %>
 
   <div class="field">
-    <%= f.label :content %><br />
+    <%= f.label t('article_content') %><br />
     <%= f.text_area :content, :class => 'article_field markitup_setting' %>
   </div>
 		
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t('post_article')%>
   </div>
 <% end %>

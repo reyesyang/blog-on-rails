@@ -8,11 +8,11 @@
 				<%= comment.commenter %>
       </span>
       <span class="created_at">
-        commented at: <%= comment.created_at.in_time_zone(+8.hours).strftime('%D %T') %>
+        <%= t 'post_at' %> <%= comment.created_at.in_time_zone(+8.hours).strftime('%D %T') %>
       </span>
       <% if session[:user_id] %>
         <span class="operation">
-          <%= link_to 'Delete', [comment.article, comment],
+          <%= link_to t('destroy'), [comment.article, comment],
             :confirm => 'Are you sure?',
             :method => :delete %>
         </span>

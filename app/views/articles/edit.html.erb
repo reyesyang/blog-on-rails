@@ -1,6 +1,8 @@
-<h1>Editing article</h1>
-
+<h1><%= t 'edit_article' %></h1>
+<span class='operation'>
+  <%= link_to t('show'), @article %> |
+  <%= link_to t('back'), articles_path %>
+</span>
 <%= render 'form' %>
 
-<%= link_to 'Show', @article %> |
-<%= link_to 'Back', articles_path %>
+

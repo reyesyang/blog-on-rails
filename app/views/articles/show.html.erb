@@ -4,15 +4,15 @@
 	<header>
 		<h2><%= @article.title %></h2>
 		<span class="created_at">
-			Post at: <%= @article.created_at.in_time_zone(+8.hours).strftime('%D %T') %>
+      <%= t 'post_at' %> <%= @article.created_at.in_time_zone(+8.hours).strftime('%D %T') %>
 		</span>
 		<span class="tags">
-		  Tags:	<%= sanitize join_tags @article %>
+      <%= t 'tags' %>	<%= sanitize join_tags @article %>
     </span>
     <% if session[:user_id] %>
       <span class="operation">
-        <%= link_to 'Edit', edit_article_path(@article) %>
-        <%= link_to 'Back', articles_path %>
+        <%= link_to t('edit'), edit_article_path(@article) %>
+        <%= link_to t('back'), articles_path %>
       </span>
     <% end %>
 	</header>
@@ -22,14 +22,14 @@
 	</div>
 
 	<section id="comments">
-		<h2>Comments</h2>
+    <h2><%= t 'comments' %></h2>
 		<%= render :partial => "comments/comment",
 			:collection => @comments %>
 		<%= will_paginate @comments %>
 	</section>
 
 	<div id="comment_form">
-		<h2>Add a comment:</h2>
+    <h2><%= t 'add_a_comment' %></h2>
 		<%= render "comments/form" %>
 	</div>
 </article>

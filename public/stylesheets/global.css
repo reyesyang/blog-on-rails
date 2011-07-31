@@ -57,7 +57,7 @@ nav {
 	border-width: 0 0 1px 0;
 	border-style: solid;
 	border-color: silver;
-	padding: 0 0 10px 0;
+	margin: 0 0 10px 0;
 }
 
 .red_header {
@@ -226,6 +226,7 @@ footer {
 	border-color: silver;
 	padding: 5px 0;
 	background-color: #FFF9D4;
+	margin: 0 0 10px 0;
 }
 
 /* me */

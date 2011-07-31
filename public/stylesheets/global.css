@@ -23,6 +23,14 @@ body {
   margin: 0 auto;
 }
 
+img {
+	border: none;
+}
+
+img:hover {
+	border: none;
+}
+
 #global_header {
 	height: 200px;
 	border-width: 0 0 1px 0;

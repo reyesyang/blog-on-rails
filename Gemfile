@@ -31,7 +31,7 @@ gem 'require_relative'
 #   gem 'webrat'
 # end
 group :production do
-	gem 'mysql'
+	gem 'mysql2'
 end
 
 gem 'jquery-rails', '>= 1.0.12'

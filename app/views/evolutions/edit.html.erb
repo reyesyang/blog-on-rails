@@ -1,6 +1,8 @@
-<h1>Editing evolution</h1>
-
+<header class="red_header">
+	<h2>Editing evolution</h2>
+</header>
+<span class="operation">
+	<%= link_to t('show'), @evolution %> |
+	<%= link_to t('back'), evolutions_path %>
+</span>
 <%= render 'form' %>
-
-<%= link_to 'Show', @evolution %> |
-<%= link_to 'Back', evolutions_path %>

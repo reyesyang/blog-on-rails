@@ -1,25 +1,49 @@
-<h1>Listing evolutions</h1>
+<header class="red_header">
+	<h2>
+		<%= t 'about_me' %>
+	</h2>
+</header>
+<div class="self_introduction">
+	<%= sanitize t('temp_me') %>
+</div>
 
-<table>
-  <tr>
-    <th>Licence</th>
-    <th>Change</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<header class="red_header">
+	<h2>
+		<%= t 'about_blog' %>
+	</h2>
+</header>
+
+<% if session[:user_id] %>
+<div class="top_operation">
+	<%= link_to t('new_evolution'), new_evolution_path %>
+</div>
+<% end %>
 
 <% @evolutions.each do |evolution| %>
-  <tr>
-    <td><%= evolution.licence %></td>
-    <td><%= evolution.change %></td>
-    <td><%= link_to 'Show', evolution %></td>
-    <td><%= link_to 'Edit', edit_evolution_path(evolution) %></td>
-    <td><%= link_to 'Destroy', evolution, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<article class="evolution">
+  <header class="evolution_header">
+		<span class="version">
+		<% if @evolutions.index(evolution) == 0 %>
+			<%= t 'version' %> <%= evolution.version %> <%= '(' + t('current_version') + ')' %>
+		<% else %>
+			<%= t 'version' %> <%= evolution.version %>
+		<% end %>
+		</span>
+		<br/>
+		<span class="created_at">                                                                                                   
+			<%= t 'post_at' %> <%= evolution.created_at.in_time_zone(+8.hours).strftime('%D %T') %>
+		</span>
+		<% if session[:user_id] %>
+			<span class="operation">
+				<%= link_to t('show'), evolution %>
+				<%= link_to t('edit'), edit_evolution_path(evolution) %>
+				<%= link_to t('destroy'), evolution, :confirm => 'Are you sure?', :method => :delete %>
+			</span>
+		<% end %>
+	</header>
+
+	<div class="evolution_change">
+		<%= sanitize evolution.change %>
+	</div>
+</article>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Evolution', new_evolution_path %>

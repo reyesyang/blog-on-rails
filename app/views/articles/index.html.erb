@@ -1,11 +1,15 @@
 <% if session[:user_id] %>
+<div class="top_operation">
   <%= link_to t('new_article'), new_article_path %>
+</div>
 <% end %>
 
 <% @articles.each do |article| %>
-  <article>
-		<header>
-    	<h2><%= link_to article.title, article %></h2>
+  <article class="article">
+		<header class="red_header">
+    	<h2 class="article_title">
+				<%= link_to article.title, article %>
+			</h2>
 			<span class="created_at">
         <%= t 'post_at' %> <%= article.created_at.in_time_zone(+8.hours).strftime('%D %T') %>
 			</span>
@@ -20,7 +24,7 @@
       <% end %>
 		</header>
 
-    <div class="article_summary:">
+    <div class="article_summary">
       <%= sanitize article.summary %>
     </div>
     <span class="operation">

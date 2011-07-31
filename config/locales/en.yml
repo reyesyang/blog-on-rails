@@ -6,37 +6,52 @@ en:
   about: About
   acknowledge: Acknowledge
   logout: Logout
+  tag_header: Tags
 
-  #Article index page
+  #article index page
   new_article: New article
   create_article: Create article
-  post_at: Post at
-  tags: Tags
+  post_at: "Post at: "
+  tags: "Tags: "
   show: Show
   more: More
   edit: Edit
   destroy: Delete
   back: Back
 
-  #Show article page
+  #show article page
   comments: Comments
   add_a_comment: Add a comment
   commenter: Commenter
   comment_content: Content
   create_comment: Post Comment
+  have_no_comments_now: No comment was posted now
 
-  #New article page
+  #new article page
   title: Title
   summary: Summary
   tags: Tags
   article_content: Content
   post_article: Post Article
   
-  #Edit article page
+  #edit article page
   edit_article: Edit article
 
+  #evolution index page
+  about_me: About me
+  tem_me: "<p>Former java weber, but rails weber now. A beginner of rails, but rails fascinates me.<br/>This blog is the result of rails study, and I also use it to record my study.<br/>If you have any question about this blog, I hope you can comment me or mail me: reyes.yang[at]gmail[dot]com." 
+  about_blog: About this blog
+  version: "Version: "
+  change: "Change: "
+
+  #evolution created page
+  new_evolution: New evolution
+  create_evolution: Create Evolution
+
+  #global footer
   licence_prefix: Unless otherwise specified,This work is licensed under a 
   licence: Creative Commons Attribution-ShareAlike 3.0 Unported License
   licence_link: http://creativecommons.org/licenses/by-sa/3.0
   licence_suffix: .
-  
+  current_version: Current version
+  copy_right: reyesyang.info

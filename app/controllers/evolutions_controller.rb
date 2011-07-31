@@ -1,4 +1,5 @@
 class EvolutionsController < ApplicationController
+	skip_before_filter :authorize, :only => :index
   # GET /evolutions
   # GET /evolutions.xml
   def index
@@ -40,7 +41,17 @@ class EvolutionsController < ApplicationController
   # POST /evolutions
   # POST /evolutions.xml
   def create
-    @evolution = Evolution.new(params[:evolution])
+		last_evolution = Evolution.first
+		main_version_str = Time.now.strftime("%y.%m.%d")
+		sub_version = 1
+
+		if last_evolution
+			sub_version = last_evolution.version.include?(main_version_str) ? last_evolution.version.split('.').last.to_i + 1 : 1
+		end 
+
+		sub_version_str = sub_version < 10 ? '0' + sub_version.to_s : sub_version.to_s
+		version = main_version_str + '.' + sub_version_str
+		@evolution = Evolution.new(:change => params[:evolution][:change], :version => version)
 
     respond_to do |format|
       if @evolution.save

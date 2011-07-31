@@ -1,7 +1,8 @@
 <header class="red_header">
-	<h2>New evolution</h2>
+	<h2><%= t 'new_acknowledge' %></h2>
 </header>
+
 <span class="operation">
-	<%= link_to t('back'), evolutions_path %>
+	<%= link_to t('back'), acknowledges_path %>
 </span>
 <%= render 'form' %>

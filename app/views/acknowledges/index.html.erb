@@ -1,0 +1,52 @@
+<header class="red_header">
+	<h2><%= t 'acknowledge_tech_list' %></h2>
+</header>
+
+<% if session[:user_id] %>
+<div class="top_operation">
+	 <%= link_to 'New Acknowledge', new_acknowledge_path %>
+</div>
+<% end %>
+
+<% @acknowledges.each do |acknowledge| %>
+<div class="acknowledge" >
+	<% if session[:user_id] %>
+	<span class="operation">
+		<%= link_to t('edit'), edit_acknowledge_path(acknowledge) %> |
+		<%= link_to t('destroy'), acknowledge, :confirm => t('confirm'), :method => :delete %>
+	</span>
+	<% end %>
+
+	<div class="acknowledge_image">
+		<a href='<%= acknowledge.website %>' >
+			<%= image_tag acknowledge.image_url %>
+		</a>
+	</div>
+
+	<div class="acknowledge_details">
+		<span>
+			<%= t 'acknowledge_name' %>:
+		</span>
+		<span>
+			<%= acknowledge.name %>
+		</span>
+		<br/>
+
+		<span>
+			<%= t 'acknowledge_website' %>:
+		</span>
+		<span>
+			<%= link_to acknowledge.website, acknowledge.website %>
+		</span>
+		<br/>
+
+		<span>
+			<%= t 'acknowledge_description' %>:
+		</span>
+		<span>
+			<%= acknowledge.description %>
+		</span>
+	</div>
+	<div class="clear"></div>
+</div>
+<% end %>

@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110719123340) do
+ActiveRecord::Schema.define(:version => 20110731075616) do
+
+  create_table "acknowledges", :force => true do |t|
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "website"
+    t.string   "image_url"
+  end
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -34,7 +43,6 @@ ActiveRecord::Schema.define(:version => 20110719123340) do
   end
 
   create_table "evolutions", :force => true do |t|
-    t.string   "licence"
     t.text     "change"
     t.datetime "created_at"
     t.datetime "updated_at"

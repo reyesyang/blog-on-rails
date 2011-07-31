@@ -1,9 +1,12 @@
 Blog::Application.routes.draw do
+  resources :acknowledges
+
   resources :evolutions
 
   get "admin" => "admin#index"
 	get "articles/tag/:tag_id" => "articles#get_articles_by_tag_id"
   get "about" => "evolutions#index"
+	get "acknowledge" => "acknowledges#index"
 
   controller :sessions do
     get 'login' => :new

@@ -1,6 +1,8 @@
-<h1><%= t 'create_article' %></h1>
+<header class="red_header">
+	<h1><%= t 'create_article' %></h1>
+</header>
 <span class='operation'>
-  <%= link_to 'Back', articles_path %>
+  <%= link_to t('back'), articles_path %>
 </span>
 <%= render 'form' %>
 

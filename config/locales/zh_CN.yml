@@ -3,8 +3,10 @@ zh_CN:
   about: 关于
   acknowledge: 感谢
   logout: 注销
+  tag_header: 标签
+  confirm: 确定要执行此操作吗？
 
-  #Article index page
+  #article index page
   new_article: 现在就发表一篇
   create_article: 创建文章
   post_at: 发表于：
@@ -15,25 +17,52 @@ zh_CN:
   destroy: 删除
   back: 返回
 
-  #Show article page
+  #show article page
   comments: 留言
   add_a_comment: 说点什么 
   commenter: 留言昵称
   comment_content: 留言内容
   create_comment: 发表留言
+  have_no_comments_now: 暂时还没有任何留言
 
-  #New article page
+  #new article page
   title: 文章标题
   summary: 文章简介
   article_content: 文章正文
   post_article: 发表文章
 
-  #Edit article page
+  #edit article page
   edit_article: 编辑文章
 
+  #evolution index page
+  new_evolution: 新的进化
+  about_me: 吾
+  temp_me: "<p>前java weber, 现rails weber, 虽为rails初学者，但觉相见恨晚。<br/>本博客便是rails学习的练手成果，也用来记录学习中的点滴。<br/>如对本博客有任何疑问，欢迎留言指教。也可email之: reyes.yang[at]gmail[dot]com</p>"
+  about_blog: 本站进化史
+  version: 版本号：
+  change: 哪些变化
+
+  #evolution created page
+  new_evolution: 新的进化
+  create_evolution: 记录新的进化
+
+  #acknowledge form
+  acknowledge_name: 名称
+  acknowledge_image_url: 图像地址
+  acknowledge_website: 主页网址
+  acknowledge_description: 描述
+  create_acknowledge: 添加感谢
+
+  #acknowledge created page
+  new_acknowledge: 记录感谢
+
+  #acknowledge index page
+  acknowledge_tech_list: 感谢下列技术支持 
+  
+  #global footer
   licence_prefix: 除特别说明外本站内容均采用
   licence: 知识共享署名-相同方式共享 3.0 Unported许可协议
   licence_link: http://creativecommons.org/licenses/by-sa/3.0/deed.zh
   licence_suffix: 进行许可。
   current_version: 本博客当前版本
-  copy_right: Reyes Yang
+  copy_right: reyesyang.info

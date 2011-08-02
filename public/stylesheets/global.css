@@ -224,16 +224,14 @@ footer {
 	font-size: 13px;
 	border-style: dashed;
 	border-width: 1px;
-	border-color: #000000;
-	background-color: #CDC97D/*#FFF9D4*/;
+	border-color: silver;
+	background-color: #FFF9D4;
 }
 
 .reference {
-	border-style: dashed;
-	border-width: 1px;
-	border-color: silver;
+	border: 1px dashed silver;
 	padding: 5px 0;
-	background-color: #FFF9D4;
+	/*background-color: #FFF9D4;*/
 	margin: 0 0 10px 0;
 }
 
@@ -245,7 +243,7 @@ footer {
 /* evolution */
 .evolution {
 	border: 1px dashed silver;
-	background: #FFF9D4;
+	/*background: #FFF9D4;*/
 	padding: 5px;
 	margin: 0 0 10px 0;
 }
@@ -268,7 +266,7 @@ footer {
 /* acknowledge */
 .acknowledge {
 	border: 1px dashed silver;
-	background: #FFF9D4;
+	/*background: #FFF9D4;*/
 	padding: 5px;
 	margin: 0 0 10px 0;
 }

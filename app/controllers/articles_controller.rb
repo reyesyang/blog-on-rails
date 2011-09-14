@@ -137,7 +137,7 @@ class ArticlesController < ApplicationController
 
 	# GET /articles/tag/1
 	def get_articles_by_tag_id
-		@articles = Article.paginate_by_sql(['select * from articles inner join articles_tags on articles.id=articles_tags.article_id where articles_tags.tag_id=? order by created_at desc', params[:tag_id]],
+		@articles = Article.paginate_by_sql(['select * from articles inner join taggings on articles.id=taggings.article_id where taggings.tag_id=? order by created_at desc', params[:tag_id]],
 		:page => params[:page],
 		:per_page => 7)
 

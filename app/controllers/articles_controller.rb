@@ -79,6 +79,7 @@ class ArticlesController < ApplicationController
   # PUT /articles/1.xml
   def update
     @article = Article.find(params[:id])
+=begin
 		article_hash = params[:article]
 		article_hash[:tags_attributes].each do |tag_array|
 			tag_hash = tag_array[1]
@@ -103,10 +104,11 @@ class ArticlesController < ApplicationController
 		@article.title = article_hash[:title]
 		@article.summary = article_hash[:summary]
 		@article.content = article_hash[:content]
+=end
 
     respond_to do |format|
-      #if @article.update_attributes(params[:article])
-			if @article.save
+      if @article.update_attributes(params[:article])
+			#if @article.save
         format.html { redirect_to(@article, :notice => 'Article was successfully updated.') }
         format.xml  { head :ok }
       else

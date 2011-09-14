@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110731075616) do
+ActiveRecord::Schema.define(:version => 20110914140634) do
 
   create_table "acknowledges", :force => true do |t|
     t.text     "description"
@@ -29,11 +29,6 @@ ActiveRecord::Schema.define(:version => 20110731075616) do
     t.datetime "updated_at"
   end
 
-  create_table "articles_tags", :id => false, :force => true do |t|
-    t.integer "article_id"
-    t.integer "tag_id"
-  end
-
   create_table "comments", :force => true do |t|
     t.string   "commenter"
     t.text     "content"
@@ -47,6 +42,11 @@ ActiveRecord::Schema.define(:version => 20110731075616) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "version"
+  end
+
+  create_table "taggings", :id => false, :force => true do |t|
+    t.integer "article_id"
+    t.integer "tag_id"
   end
 
   create_table "tags", :force => true do |t|

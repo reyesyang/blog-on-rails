@@ -1,5 +1,5 @@
-<% @article.tags.build %>
-<%= form_for(@article) do |f| %>
+<!--% @article.tags.build %-->
+<%= form_for @article do |f| %>
   <% if @article.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
@@ -22,11 +22,9 @@
   </div>
 	
 	<div class="field">
-		<%= f.label 'Tags' %><br/>
-		<%= f.text_field :tags, :class => 'article_field' %>
+		<%= f.label :tag_names %><br/>
+		<%= f.text_field :tag_names, :class => 'article_field' %>
 	</div>
-	<%= render :partial => 'tags/form',
-		:locals => {:form => f} %>
 
   <div class="field">
     <%= f.label t('article_content') %><br />

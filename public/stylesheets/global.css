@@ -18,7 +18,12 @@ a:hover {
 
 /* */
 body {
-  width: 80%;
+	background-image: url("/images/bg.png");
+}
+
+#main_wrapper {
+	background-color: #FFFFFF;
+  width: 75%;
   min-width: 960px;
   margin: 0 auto;
 }
@@ -41,6 +46,37 @@ img:hover {
 #logo {
 	position: relative;
 	top: 20px;
+}
+
+#login {
+	width: 100%;
+	margin: 0 auto;
+}
+
+#login_info {
+	text-align: right;
+	vertical-align: middle;
+	padding-right: 10px;
+}
+
+#login_form {
+	width: 50%;
+	border-width: 0 0 0 1px;
+	border-style: solid;
+	border-color: silver;
+	padding-left: 10px;
+}
+
+#login_form table {
+	width: 100%;
+}
+
+#login_form table tr {
+	height: 23px;
+}
+
+.field input {
+	width: 75%;
 }
 
 nav {

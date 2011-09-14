@@ -21,6 +21,10 @@
     <%= f.text_area :summary, :class => 'article_field markitup_setting'%>
   </div>
 	
+	<div class="field">
+		<%= f.label 'Tags' %><br/>
+		<%= f.text_field :tags, :class => 'article_field' %>
+	</div>
 	<%= render :partial => 'tags/form',
 		:locals => {:form => f} %>
 

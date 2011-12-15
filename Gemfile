@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -32,7 +32,7 @@ gem 'require_relative'
 #   gem 'webrat'
 # end
 group :production do
-	gem 'mysql2', '0.2.7'
+	gem 'mysql2'
 end
 
 # gem 'jquery-rails', '>= 1.0.12'

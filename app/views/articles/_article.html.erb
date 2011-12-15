@@ -1,0 +1,31 @@
+<article class="article">
+  <header class="red_header">
+    <h2 class="article_title">
+      <%= link_to article.title, article %>
+    </h2>
+	
+    <span class="created_at">
+      <%= t 'post_at' %> <%= article.created_at.in_time_zone(+8.hours).strftime('%D %T') %>
+	</span>
+	<span class="tags">
+      <%= t 'tags' %> <%= sanitize join_tags article %>
+    </span>
+    <% if session[:user_id] %>
+      <span class="operation">
+        <%= link_to t('edit'), edit_article_path(article) %>
+        <%= link_to t('destroy'), article, :confirm => 'Are you sure?', :method => :delete %>
+      </span>
+    <% end %>
+  </header>
+
+  <div class="article_summary">
+    <%= sanitize article.summary %>
+  </div>
+  <span class="operation">
+    <%= link_to '>>' + t('more'), article %>
+  </span>
+  <br/>
+
+  <div class="clear"></div>
+</article>
+

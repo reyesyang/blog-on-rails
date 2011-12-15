@@ -3,41 +3,4 @@
 	<h2><%= t('show') %></h2>
 </header>
 
-<div class="acknowledge" >
-	<span class="operation">
-		<%= link_to t('edit'), edit_acknowledge_path(@acknowledge) %> |
-		<%= link_to t('back'), acknowledges_path %>
-	</span>
-
-	<div class="acknowledge_image">
-		<a href='<%= @acknowledge.website %>' >
-			<%= image_tag @acknowledge.image_url %>
-		</a>
-	</div>
-
-	<div class="acknowledge_details">
-		<span>
-			<%= t 'acknowledge_name' %>:
-		</span>
-		<span>
-			<%= @acknowledge.name %>
-		</span>
-		<br/>
-
-		<span>
-			<%= t 'acknowledge_website' %>:
-		</span>
-		<span>
-			<%= @acknowledge.website %>
-		</span>
-		<br/>
-
-		<span>
-			<%= t 'acknowledge_description' %>:
-		</span>
-		<span>
-			<%= @acknowledge.description %>
-		</span>
-	</div>
-	<div class="clear"></div>
-</div>
+<%= render @acknowledge %>

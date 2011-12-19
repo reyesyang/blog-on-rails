@@ -5,7 +5,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if user = User.authenticate(params[:name], params[:password])
+    user = User.find_by_name params[:name]
+    if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to admin_url
     else
@@ -14,8 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    reset_session
     redirect_to articles_url, :notice => "Logged our"
   end
-
 end

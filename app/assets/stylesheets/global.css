@@ -215,6 +215,10 @@ article footer {
 	border-width: 0;
 }
 
+.left-full-width {
+  width: 670px;
+}
+
 /*article footer a {
   display: block;
   float: right;
@@ -328,4 +332,13 @@ footer {
 	border-color: silver;
 	border-style: solid;
 	padding: 0 0 0 5px;
+}
+
+/* bootstrap rewrite */
+.actions {
+  background: none;
+  margin-top: 18px;
+  margin-bottom: 18px;
+  padding: 0;
+  border: none;
 }

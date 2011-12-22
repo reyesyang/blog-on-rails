@@ -15,12 +15,12 @@
   </div>
 
   <div class="field">
-    <div id='wmd-button-bar' class='span11'></div>
-    <%= f.text_area :content, :id => 'wmd', :class => 'span11', :rows => 5 %>
+    <div id='wmd-button-bar' class='left-full-width' ></div>
+    <%= f.text_area :content, :id => 'wmd', :class => 'left-full-width', :rows => 5 %>
   </div>
 
-  <div class="actions"> 
-    <%= f.submit t('create_comment') %>
+  <div class="actions">
+    <%= f.submit t('create_comment'), :class => 'btn' %>
   </div>
   <div id='wmd-preview'></div>
 <% end %>

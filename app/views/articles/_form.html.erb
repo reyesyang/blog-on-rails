@@ -13,25 +13,25 @@
   <% end %>
 
   <div class="field">
-    <%= f.text_field :title, :class => 'span11'%>
+    <%= f.text_field :title, :class => 'left-full-width'%>
   </div>
 
   <div class="field">
-    <%= f.text_area :summary, :class => 'span11'%>
+    <%= f.text_area :summary, :class => 'left-full-width'%>
   </div>
 
   <div class="field">
-    <div id='wmd-button-bar' class='span11'></div>
-    <%= f.text_area :content, :id => 'wmd', :class => 'span11' %>
+    <div id='wmd-button-bar' class='left-full-width' ></div>
+    <%= f.text_area :content, :id => 'wmd', :class => 'left-full-width' %>
   </div>
   
   <div class="field">
-    <%= f.text_field :tag_names, :class => 'span11' %>
+    <%= f.text_field :tag_names, :class => 'left-full-width'%>
   </div>
 
   <div class="actions">
-    <%= f.submit t('post_article')%>
+    <%= f.submit t('post_article'), :class => 'btn' %>
   </div>
 
-  <div id='wmd-preview' class='span11'></div>
+  <div id='wmd-preview' class='left-full-width'></div>
 <% end %>

@@ -5,3 +5,7 @@
 #wmd-button-bar {
   margin-left: 0;
 }
+
+.wmd-prompt-dialog {
+  padding: 10px 15px 5px;
+}

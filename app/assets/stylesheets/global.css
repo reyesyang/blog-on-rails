@@ -1,3 +1,5 @@
+
+
 * {
   margin: 0;
   padding: 0;
@@ -189,11 +191,12 @@ nav {
 }
 
 .comment_content {
-	border-width: 1px;
-	border-style: solid;
-	border-color: silver;
 	margin-left: 60px;
-	padding: 5px;
+	padding: 5px 0;
+}
+
+.comment_content p {
+  margin: 0;
 }
 
 .comment footer {

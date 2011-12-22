@@ -342,3 +342,10 @@ footer {
   padding: 0;
   border: none;
 }
+
+input,
+textarea,
+select,
+.uneditable-input {
+  color: #333333;
+}

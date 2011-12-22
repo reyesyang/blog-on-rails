@@ -1,14 +1,10 @@
 <article class="article">
-	<p id="notice"><%= notice %></p>
-
-	<header class="red_header">
-		<h2 class="article_title">
-			<%= @article.title %>
-		</h2>
-		<span class="created_at">
+  <header class="red_header">
+    <h2 class="article_title"><%= @article.title %></h2>
+    <span class="created_at">
       <%= t 'post_at' %> <%= @article.created_at.in_time_zone(+8.hours).strftime('%D %T') %>
-		</span>
-		<span class="tags">
+    </span>
+    <span class="tags">
       <%= t 'tags' %>	<%= sanitize join_tags @article %>
     </span>
     <% if session[:user_id] %>
@@ -17,29 +13,28 @@
         <%= link_to t('back'), articles_path %>
       </span>
     <% end %>
-	</header>
+  </header>
 
-	<div class="article_content"> 
-		<%= sanitize @article.content %>
-	</div>
+  <div class="article_content"> 
+    <%= sanitize @article.content %>
+  </div>
 
-	<section id="comments">
+  <section id="comments">
     <header class="red_header">
-			<h2><%= t 'comments' %></h2>
-		</header>
-		<% if @comments.count > 0 %>
-			<%= render :partial => "comments/comment",
-				:collection => @comments %>
-			<%= will_paginate @comments %>
-		<% else %>
-			<span><%= t 'have_no_comments_now' %>
-		<% end %>
-	</section>
+      <h2><%= t 'comments' %></h2>
+    </header>
+    <% if @comments.count > 0 %>
+      <%= render :partial => "comments/comment", :collection => @comments %>
+      <%= will_paginate @comments %>
+    <% else %>
+      <span><%= t 'have_no_comments_now' %>
+    <% end %>
+  </section>
 
-	<div id="comment_form">
+  <div id="comment_form">
     <header class="red_header">
-			<h2><%= t 'add_a_comment' %></h2>
-		</header>
-		<%= render "comments/form" %>
-	</div>
+      <h2><%= t 'add_a_comment' %></h2>
+    </header>
+    <%= render "comments/form" %>
+  </div>
 </article>

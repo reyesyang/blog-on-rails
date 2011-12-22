@@ -1,8 +1,7 @@
-<h1><%= t 'edit_article' %></h1>
-<span class='operation'>
-  <%= link_to t('show'), @article %> |
-  <%= link_to t('back'), articles_path %>
-</span>
+<header class="red_header">
+  <h2><%= t 'edit_article' %></h2>
+</header>
+
 <%= render 'form' %>
 
 

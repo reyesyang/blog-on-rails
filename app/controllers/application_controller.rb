@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
 	before_filter :get_tags
 	before_filter :get_current_version
 
+  helper_method :current_user
+
   def current_user
     @current_user
   end

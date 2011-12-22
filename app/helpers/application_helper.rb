@@ -1,8 +1,4 @@
 module ApplicationHelper
-  def current_user
-    @current_user
-  end
-  
   def format_text(text, options = {})
     sanitize markdown(link_mentions(text, options[:mention_names]))
   end

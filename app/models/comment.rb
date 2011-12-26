@@ -1,5 +1,11 @@
 class Comment < ActiveRecord::Base
-  validates :commenter, :content, :presence => true
+  include Gravtastic
+  gravtastic :visitor_email,
+             :secure => false,
+             :filetype => :gif,
+             :size => 40,
+             :rating => :G
 
-	belongs_to :article
+  validates :content, :presence => true
+  belongs_to :article
 end

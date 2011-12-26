@@ -18,9 +18,6 @@
     <% end %>
   </header>
 
-  <div class="article_summary">
-    <%= raw(truncate(format_text(article.content), :length => 100)) %>
-  </div>
   <span class="operation">
     <%= link_to '>>' + t('more'), article %>
   </span>

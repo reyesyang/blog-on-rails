@@ -11,14 +11,21 @@
   <% end %>
 
   <div class="field">
-    <%= f.text_field :commenter, :class => 'span5' %>
+    <%= f.text_field :visitor_name, :class => 'span5' %>
+    <span>您的昵称，可不填。</span>
   </div>
-
+  <div class="field">
+    <%= f.text_field :visitor_email, :class => 'span5' %>
+    <span>你的邮箱，用于显示您的Gravatar头像，可不填 。</span>
+  </div>
+  <div class="field">
+    <%= f.text_field :visitor_website, :class => 'span5' %>
+    <span>您的个人主页，用于交流回访，可不填。</span>
+  </div>
   <div class="field">
     <div id='wmd-button-bar' class='left-full-width' ></div>
     <%= f.text_area :content, :id => 'wmd', :class => 'left-full-width', :rows => 5 %>
   </div>
-
   <div class="actions">
     <%= f.submit t('create_comment'), :class => 'btn' %>
   </div>

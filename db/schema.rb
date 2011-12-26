@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111226092054) do
+ActiveRecord::Schema.define(:version => 20111226155836) do
 
   create_table "acknowledges", :force => true do |t|
     t.text     "description"
@@ -38,7 +38,9 @@ ActiveRecord::Schema.define(:version => 20111226092054) do
     t.integer  "article_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "commenter"
+    t.string   "visitor_name"
+    t.string   "visitor_email"
+    t.string   "visitor_website"
   end
 
   create_table "evolutions", :force => true do |t|

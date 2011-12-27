@@ -2,9 +2,11 @@
   <div class="field">
     <%= f.text_field :title, :class => 'left-full-width'%>
   </div>
-  <div class="field">
-    <%= f.text_field :english_title, :class => 'left-full-width'%>
-  </div>
+  <% if params[:action] == 'new' %>
+    <div class="field">
+      <%= f.text_field :english_title, :class => 'left-full-width'%>
+    </div>
+  <% end %>
   <div class="field">
     <%= f.text_field :tags_string, :class => 'left-full-width'%>
   </div>

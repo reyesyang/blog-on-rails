@@ -17,10 +17,6 @@ class ArticlesController < ApplicationController
   # GET /articles/1.xml
   def show
     @article = Article.find(params[:id])
-		@comments = Comment.paginate_by_sql(['select * from comments where article_id=? order by created_at desc', params[:id]],
-			:page => params[:page],
-			:per_page => 7)
-		@comment = Comment.new
 
     respond_to do |format|
       format.html # show.html.erb

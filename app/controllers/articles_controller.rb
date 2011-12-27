@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.xml
   def index
-    @articles = Article.paginate(:page => params[:page],
+    @articles = Article.includes(:tags).paginate(:page => params[:page],
                                  :order => 'created_at desc',
                                  :per_page => 7)
 
@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.xml
   def show
-    @article = Article.find(params[:id])
+    @article = Article.includes(:tags).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -37,7 +37,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
-    @article = Article.find(params[:id])
+    @article = Article.includes(:tags).find(params[:id])
   end
 
   # POST /articles
@@ -77,11 +77,6 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1.xml
   def destroy
     @article = Article.find(params[:id])
-    tags = @article.tags
-    tags.each do |tag|
-      tag.destroy unless tag.articles.count > 1
-    end
-
     @article.destroy
 
     respond_to do |format|

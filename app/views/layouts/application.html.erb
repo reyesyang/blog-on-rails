@@ -49,7 +49,7 @@
         </header>
         <% if @tags %>
           <% @tags.each do |tag| %>
-            <%= link_to tag.name, '/articles/tag/'+ tag.id.to_s, :class=>'aside_tag' %> x <%= tag.articles.count %>
+            <%= link_to tag.name, '/articles/tag/'+ tag.id.to_s, :class=>'aside_tag' %> x <%= tag.articles_count %>
             <br/>
           <% end %>
         <% else %>

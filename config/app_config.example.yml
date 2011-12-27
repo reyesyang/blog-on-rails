@@ -1,0 +1,8 @@
+development:
+  secret_token:
+
+test:
+  secret_token:
+
+production:
+  secret_token:

@@ -1,37 +1,21 @@
-<!--% @article.tags.build %-->
 <%= form_for @article do |f| %>
-  <% if @article.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
-
-      <ul>
-      <% @article.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <div class="field">
+    <%= f.text_field :title, :class => 'left-full-width'%>
+  </div>
+  <% if params[:action] == 'new' %>
+    <div class="field">
+      <%= f.text_field :english_title, :class => 'left-full-width'%>
     </div>
   <% end %>
-
   <div class="field">
-    <%= f.label t('title') %><br />
-    <%= f.text_field :title, :class => 'article_field'%>
+    <%= f.text_field :tags_string, :class => 'left-full-width'%>
   </div>
   <div class="field">
-    <%= f.label t('summary') %><br />
-    <%= f.text_area :summary, :class => 'article_field markitup_setting'%>
+    <div id='wmd-button-bar' class='left-full-width' ></div>
+    <%= f.text_area :content, :id => 'wmd', :class => 'left-full-width' %>
   </div>
-	
-	<div class="field">
-		<%= f.label :tag_names %><br/>
-		<%= f.text_field :tag_names, :class => 'article_field' %>
-	</div>
-
-  <div class="field">
-    <%= f.label t('article_content') %><br />
-    <%= f.text_area :content, :class => 'article_field markitup_setting' %>
-  </div>
-		
+  <div id='wmd-preview' class='left-full-width'></div>
   <div class="actions">
-    <%= f.submit t('post_article')%>
+    <%= f.submit t('post_article'), :class => 'btn' %>
   </div>
 <% end %>

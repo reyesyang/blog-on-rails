@@ -1,0 +1,16 @@
+/*
+ *= require 'wmd'
+*/
+
+#wmd-button-bar {
+  margin-left: 0;
+}
+
+#wmd-preview {
+  border: 2px dotted #CCCCCC;
+  padding: 3px;
+}
+
+.wmd-prompt-dialog {
+  padding: 10px 15px 5px;
+}

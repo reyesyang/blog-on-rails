@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110914140634) do
+ActiveRecord::Schema.define(:version => 20111227164109) do
 
   create_table "acknowledges", :force => true do |t|
     t.text     "description"
@@ -23,18 +23,25 @@ ActiveRecord::Schema.define(:version => 20110914140634) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
-    t.text     "summary"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "english_title"
+  end
+
+  create_table "articles_tags", :id => false, :force => true do |t|
+    t.integer "article_id"
+    t.integer "tag_id"
   end
 
   create_table "comments", :force => true do |t|
-    t.string   "commenter"
+    t.string   "visitor_name"
     t.text     "content"
     t.integer  "article_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "visitor_email"
+    t.string   "visitor_website"
   end
 
   create_table "evolutions", :force => true do |t|
@@ -44,21 +51,16 @@ ActiveRecord::Schema.define(:version => 20110914140634) do
     t.string   "version"
   end
 
-  create_table "taggings", :id => false, :force => true do |t|
-    t.integer "article_id"
-    t.integer "tag_id"
-  end
-
   create_table "tags", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "articles_count", :default => 0
   end
 
   create_table "users", :force => true do |t|
     t.string   "name"
-    t.string   "hashed_password"
-    t.string   "salt"
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

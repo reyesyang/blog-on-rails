@@ -3,9 +3,9 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.xml
   def index
-    @articles = Article.paginate(:page => params[:page],
-			:order => 'created_at desc',
-			:per_page => 7)
+    @articles = Article.includes(:tags).paginate(:page => params[:page],
+                                 :order => 'created_at desc',
+                                 :per_page => 7)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,11 +16,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.xml
   def show
-    @article = Article.find(params[:id])
-		@comments = Comment.paginate_by_sql(['select * from comments where article_id=? order by created_at desc', params[:id]],
-			:page => params[:page],
-			:per_page => 7)
-		@comment = Comment.new
+    @article = Article.includes(:tags).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -41,29 +37,14 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
-    @article = Article.find(params[:id])
+    @article = Article.includes(:tags).find(params[:id])
   end
 
   # POST /articles
   # POST /articles.xml
   def create
-    #@article = Article.new(params[:article]
-    article_hash = params[:article]
-    @article = Article.new(:title => article_hash[:title],
-                           :summary => article_hash[:summary],
-                           :content => article_hash[:content])
-    article_hash[:tags_attributes].each do |tag_array|
-			tag_hash = tag_array[1]
-			tag = Tag.find_by_name(tag_hash[:name])
-			if tag
-					@article.tags << tag
-			else
-				if tag_hash[:name] != ""
-					@article.tags.build(:name => tag_hash[:name])
-				end
-			end
-		end
-
+    @article = Article.new(params[:article])
+    
     respond_to do |format|
       if @article.save
         format.html { redirect_to(@article, :notice => 'Article was successfully created.') }
@@ -79,33 +60,7 @@ class ArticlesController < ApplicationController
   # PUT /articles/1.xml
   def update
     @article = Article.find(params[:id])
-=begin
-		article_hash = params[:article]
-		article_hash[:tags_attributes].each do |tag_array|
-			tag_hash = tag_array[1]
-			tag = Tag.find_by_name(tag_hash[:name])
-			if tag
-				#debugger
-				if tag_hash[:_destroy] == "1"
-					@article.tags.delete tag
-          tag.reload
-          tag.destroy unless tag.articles.count > 0
-				else
-					exist = @article.tags.exists?(tag)
-					@article.tags << tag unless exist
-				end
-			else
-				if tag_hash[:name] != ""
-					@article.tags.build(:name => tag_hash[:name])
-				end
-			end
-		end
-		
-		@article.title = article_hash[:title]
-		@article.summary = article_hash[:summary]
-		@article.content = article_hash[:content]
-=end
-
+    
     respond_to do |format|
       if @article.update_attributes(params[:article])
 			#if @article.save
@@ -122,11 +77,6 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1.xml
   def destroy
     @article = Article.find(params[:id])
-    tags = @article.tags
-    tags.each do |tag|
-      tag.destroy unless tag.articles.count > 1
-    end
-
     @article.destroy
 
     respond_to do |format|
@@ -137,9 +87,9 @@ class ArticlesController < ApplicationController
 
 	# GET /articles/tag/1
 	def get_articles_by_tag_id
-		@articles = Article.paginate_by_sql(['select * from articles inner join taggings on articles.id=taggings.article_id where taggings.tag_id=? order by created_at desc', params[:tag_id]],
-		:page => params[:page],
-		:per_page => 7)
+		@articles = Tag.find(params[:tag_id]).articles.paginate(:page => params[:page],
+                                                            :order => 'created_at DESC',
+                                                            :per_page => 7)
 
 		respond_to do |format|
 			format.html { render 'index' }

@@ -1,8 +1,10 @@
-<h1><%= t 'edit_article' %></h1>
-<span class='operation'>
-  <%= link_to t('show'), @article %> |
-  <%= link_to t('back'), articles_path %>
-</span>
+<%= javascript_include_tag 'wmd-editor' %>
+<%= stylesheet_link_tag 'wmd-editor' %>
+
+<header class="red_header">
+  <h2><%= t 'edit_article' %></h2>
+</header>
+
 <%= render 'form' %>
 
 

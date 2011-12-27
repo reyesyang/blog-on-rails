@@ -1,7 +1,7 @@
 <article class="article">
   <header class="red_header">
     <h2 class="article_title">
-      <%= link_to article.title, article %>
+      <%= link_to article.title, article_url(article) %>
     </h2>
 	
     <span class="created_at">
@@ -18,9 +18,6 @@
     <% end %>
   </header>
 
-  <div class="article_summary">
-    <%= sanitize article.summary %>
-  </div>
   <span class="operation">
     <%= link_to '>>' + t('more'), article %>
   </span>

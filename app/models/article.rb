@@ -1,27 +1,48 @@
 class Article < ActiveRecord::Base
-  validates :title, :summary, :content, :presence => true
+  after_create :increment_articles_count_on_tags
+  before_destroy :decrement_articles_count_on_tags
 
-  has_many :comments, :dependent => :destroy
-# has_and_belongs_to_many :tags
-	has_many :taggings, :dependent => :destroy
-	has_many :tags, :through => :taggings
+  validates :title, :content, :presence => true
+  validates :english_title, :uniqueness => true
 
-#  accepts_nested_attributes_for :tags, :allow_destroy => :true,
-#    :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
-	
-	attr_accessor :tag_names
-	after_save :assign_tags
+  has_and_belongs_to_many :tags
 
-	private
-	def assign_tags
-		if @tag_names
-			self.tags = @tag_names.split(';').map do |name|
-				Tag.find_or_create_by_name(name)
-			end
-		end
-	end
+  attr_accessible :title, :content, :tags_string, :english_title
 
-	def tag_names
-		@tag_names || tags.map(&:name).join(';')
-	end
+  def tags_string=(value)
+    self.tags = value.split(';').map do |name|
+      Tag.find_or_create_by_name(name.strip)
+    end
+  end
+
+  def tags_string
+    self.tags.map(&:name).join('; ')
+  end
+
+  def to_param
+    "#{id}-#{english_title.parameterize}"
+  end
+
+  private
+  def increment_articles_count_on_tags
+    self.tags.each do |tag| 
+      tag.update_attribute(:articles_count, tag.articles_count + 1)
+    end
+  end
+ 
+  def decrement_articles_count_on_tags
+    puts '*' * 20
+    self.tags.each do |tag|
+      articles_count = tag.articles.count - 1;
+      puts articles_count
+
+      if articles_count > 0
+        tag.update_attribute(:articles_count, articles_count)
+        puts '*' * 20
+        puts tag.inspect
+      else
+        tag.destroy
+      end
+    end
+  end
 end

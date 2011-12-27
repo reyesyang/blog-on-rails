@@ -1,31 +1,18 @@
-<!--% @article.tags.build %-->
 <%= form_for @article do |f| %>
-  <% if @article.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
-
-      <ul>
-      <% @article.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="field">
     <%= f.text_field :title, :class => 'left-full-width'%>
   </div>
-    
+  <div class="field">
+    <%= f.text_field :english_title, :class => 'left-full-width'%>
+  </div>
   <div class="field">
     <%= f.text_field :tags_string, :class => 'left-full-width'%>
   </div>
-
   <div class="field">
     <div id='wmd-button-bar' class='left-full-width' ></div>
     <%= f.text_area :content, :id => 'wmd', :class => 'left-full-width' %>
   </div>
   <div id='wmd-preview' class='left-full-width'></div>
-  
   <div class="actions">
     <%= f.submit t('post_article'), :class => 'btn' %>
   </div>

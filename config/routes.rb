@@ -15,7 +15,7 @@ Blog::Application.routes.draw do
   end
 
   resources :users
-
+  
   resources :articles do
     resources :comments, :only => [:create, :destroy]
   end

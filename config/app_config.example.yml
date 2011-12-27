@@ -1,8 +1,16 @@
-development:
+default: &default
   secret_token:
+  database_pwd:
+  ga_account:
+  disqus_developer: 1
+  disqus_shortname:
+
+development:
+  <<: *default
 
 test:
-  secret_token:
+  <<: *default
 
 production:
-  secret_token:
+  <<: *default
+  disqus_developer: 0

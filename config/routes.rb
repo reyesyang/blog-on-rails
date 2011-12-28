@@ -1,8 +1,4 @@
 Blog::Application.routes.draw do
-  resources :acknowledges
-
-  resources :evolutions
-
   get "admin" => "admin#index"
 	get "articles/tag/:tag_id" => "articles#get_articles_by_tag_id"
   get "about" => "evolutions#index"
@@ -15,10 +11,9 @@ Blog::Application.routes.draw do
   end
 
   resources :users
-  
-  resources :articles do
-    resources :comments, :only => [:create, :destroy]
-  end
+  resources :articles
+  resources :acknowledges
+  resources :evolutions
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

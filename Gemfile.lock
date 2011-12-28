@@ -1,5 +1,5 @@
 GEM
-  remote: http://rubygems.org/
+  remote: http://ruby.taobao.org/
   specs:
     actionmailer (3.1.1)
       actionpack (= 3.1.1)
@@ -57,6 +57,7 @@ GEM
       factory_girl (~> 2.2.0)
       railties (>= 3.0.0)
     gravtastic (3.2.6)
+    haml (3.1.4)
     highline (1.6.8)
     hike (1.2.1)
     i18n (0.6.0)
@@ -156,6 +157,7 @@ DEPENDENCIES
   execjs
   factory_girl_rails
   gravtastic
+  haml
   jquery-rails
   json
   mysql2

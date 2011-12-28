@@ -1,8 +1,0 @@
-<% if session[:user_id] %>
-<div class="top_operation">
-  <%= link_to t('new_article'), new_article_path %>
-</div>
-<% end %>
-
-<%= render @articles %>
-<%= will_paginate @articles %>

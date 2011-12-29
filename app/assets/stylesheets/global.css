@@ -1,84 +1,84 @@
-
-
 * {
   margin: 0;
   padding: 0;
 }
 
 article,aside,dialog,footer,header,section,footer,nav,figure,menu{ 
-	display: block;
+  display: block;
 }
 
 a {
-	color: black;
-	text-decoration: none;
+  color: #333333;
+  text-decoration: none;
 }
 
 a:hover {
-	text-decoration: underline;
+  text-decoration: none;
+  color: #D11D1A;
 }
 
 /* */
 body {
-	background-image: url("/assets/bg.png");
+  background-image: url("/assets/bg.png");
 }
 
 #main_wrapper {
-	background-color: #FFFFFF;
+  background-color: #FFFFFF;
   width: 75%;
   min-width: 960px;
   margin: 0 auto;
 }
 
 img {
-	border: none;
+  border: none;
 }
 
 img:hover {
-	border: none;
+  border: none;
 }
 
 #global_header {
-	height: 200px;
-	border-width: 0 0 1px 0;
-	border-style: solid;
-	margin: 0 0 10px 0;
+  width: 940px;
+  height: 200px;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  margin: 0 auto 10px auto;
 }
 
 #logo {
-	position: relative;
-	top: 20px;
+  position: relative;
+  top: 20px;
 }
 
 #login {
-	width: 100%;
-	margin: 0 auto;
+  width: 100%;
+  margin: 0 auto;
 }
 
 #login_info {
-	text-align: right;
-	vertical-align: middle;
-	padding-right: 10px;
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 10px;
 }
 
 #login_form {
-	width: 50%;
-	border-width: 0 0 0 1px;
-	border-style: solid;
-	border-color: silver;
-	padding-left: 10px;
+  width: 50%;
+  border-width: 0 0 0 1px;
+  border-style: solid;
+  border-color: silver;
+  padding-left: 10px;
 }
 
 #login_form table {
-	width: 100%;
+  width: 100%;
 }
 
 #login_form table tr {
-	height: 23px;
+  height: 23px;
 }
 
 .field input {
-	/*width: 75%;*/
+  /*width: 75%;*/
 }
 
 nav {
@@ -86,7 +86,7 @@ nav {
   float: right;
   border-width: 0 1px 1px 1px;
   border-style: solid;
-	font-size: 18px;
+  font-size: 18px;
   padding: 10px 10px;
 }
 
@@ -100,99 +100,90 @@ nav {
 }
 
 .article {
-	border-width: 0 0 1px 0;
-	border-style: solid;
-	border-color: silver;
-	margin: 0 0 10px 0;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: silver;
+  margin: 0 0 10px 0;
+}
+
+.article .tags .label {
+  margin: 0 5px 0 0;
 }
 
 .red_header {
-	position: relative;
-	left: -10px;
+  position: relative;
+  left: -10px;
   border-width: 0 0 0 7px;
-	border-style: solid;
-	border-color: #D11D1A;
-	padding-left: 3px;
-	margin: 0 0 10px 0;
+  border-style: solid;
+  border-color: #D11D1A;
+  padding-left: 3px;
+  margin: 0 0 10px 0;
 }
 
 .top_operation {
-	margin: 0 0 10px 0;
+  margin: 0 0 10px 0;
 }
 
 .article_title {
-	margin: 0 0 5px 0;
-}
-
-.article header h2 a:hover {
-	text-decoration: none;
-	color: #D11D1A;
+  margin: 0 0 5px 0;
 }
 
 .article_summary {
-	margin: 10px 0 0 0;
+  margin: 10px 0 0 0;
 }
 
 .article_content {
-	margin: 10px 0;
+  margin: 10px 0;
 }
 
 .tags {
-	margin-left: 40px;
+  margin-left: 40px;
 }
 
 .operation {
-	float: right
+  float: right
 }
-
-.created_at, .tags, .operation {
-	font-size: 0.8em;
-}
-
-/*#article_content {
-	margin: 0 0 20px 0;
-}*/
 
 /* article form */
 #article_summary {
-	height: 100px;
+  height: 100px;
 }
 
 #article_content {
-	height: 400px;
+  height: 400px;
 }
 
 /* article show comment */
 #comments {
-	width: 100%;
-	margin: 20px 0;
-	border-width: 0;
+  width: 100%;
+  margin: 20px 0;
+  border-width: 0;
 }
 
 .comment {
-	border-width: 0 0 1px 0;
-	border-style: solid;
-	border-color: silver;
-	padding: 10px 0 10px 0;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: silver;
+  padding: 10px 0 10px 0;
 }
 
 .commenter_logo {
-	float: left;
-/*	margin: 0px 30px 10px 0;*/
+  float: left;
+  /*	margin: 0px 30px 10px 0;*/
 }
 
 .comment header {
-	margin-left: 60px;
+  margin-left: 60px;
 }
 
 .commenter {
-	font-weight: bold;
+  font-weight: bold;
   margin-right: 10px;
 }
 
 .comment_content {
-	margin-left: 60px;
-	padding: 5px 0;
+  margin-left: 60px;
+  padding: 5px 0;
 }
 
 .comment_content p {
@@ -200,31 +191,24 @@ nav {
 }
 
 .comment footer {
-	font-size: 0.8em;
+  font-size: 0.8em;
 }
 
 #comment_content {
-	height: 60px;
+  height: 60px;
 }
 
 .clear {
-	clear: both;
+  clear: both;
 }
 
 article footer {
-	border-width: 0;
+  border-width: 0;
 }
 
 .left-full-width {
   width: 670px;
 }
-
-/*article footer a {
-  display: block;
-  float: right;
-  margin: 0 5px;
-  padding: 0 5px;
-}*/
 
 aside {
   width: 25%;
@@ -232,12 +216,20 @@ aside {
 }
 
 #aside_tags h2 {
-	margin: 0 0 10px 0;
+  margin: 0 0 10px 0;
+}
+
+#aside_tags li {
+  margin: 5px 0;
 }
 
 .aside_tag {
-	margin: 5px 0 0 0;
-	padding: 2px;
+  margin: 5px 0 0 0;
+  padding: 2px;
+}
+
+.aside_tag .label {
+  /*color: #333333;*/
 }
 
 .clear {
@@ -249,90 +241,40 @@ footer {
   height: 20px;
   border-width: 1px 0 0 0;
   border-style: solid;
-	padding: 10px;
-	text-align: center;
+  padding: 10px;
+  text-align: center;
 }
 
 #cc {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 #cc_icon {
-	margin: 0 0 -3px 0;
+  margin: 0 0 -3px 0;
 }
 
 .code {
-	color: black;
-	font-family: Courier, Courier New;
-	font-size: 13px;
-	border-style: dashed;
-	border-width: 1px;
-	border-color: silver;
-	background-color: #FFF9D4;
+  color: black;
+  font-family: Courier, Courier New;
+  font-size: 13px;
+  border-style: dashed;
+  border-width: 1px;
+  border-color: silver;
+  background-color: #FFF9D4;
 }
 
 .reference {
-	border: 1px dashed silver;
-	padding: 5px;
-	/*background-color: #FFF9D4;*/
-	margin: 0 0 10px 0;
+  border: 1px dashed silver;
+  padding: 5px;
+  /*background-color: #FFF9D4;*/
+  margin: 0 0 10px 0;
 }
 
 /* me */
 .self_introduction {
-	margin: 0 0 10px 0;
+  margin: 0 0 10px 0;
 }
 
-/* evolution */
-.evolution {
-	border: 1px dashed silver;
-	/*background: #FFF9D4;*/
-	padding: 5px;
-	margin: 0 0 10px 0;
-}
-
-.evolution_header {
-	border-width: 0 0 1px 0;
-	border-style: solid;
-	border-color: silver/*#D11D1A*/;
-}
-
-.evolution_change {
-	margin: 5px 0 0 0;
-}
-
-.evolution_change ol {
-	padding: 0 0 0 10px;
-	margin: 0 0 0 10px;
-}
-
-/* acknowledge */
-.acknowledge {
-	border: 1px dashed silver;
-	/*background: #FFF9D4;*/
-	padding: 5px;
-	margin: 0 0 10px 0;
-}
-
-.acknowledge_image {
-	float: left;
-	width: 100px;
-	text-align: center;
-}
-
-.acknowledge_image img {
-	max-width: 95px;
-	max-height: 60px;
-	padding: 0 5px 0 0;
-}
-
-.acknowledge_details {
-	float: left;
-	border-width: 0 0 0 1px;
-	border-color: silver;
-	border-style: solid;
-	padding: 0 0 0 5px;
-}
 
 /* bootstrap rewrite */
 .actions {

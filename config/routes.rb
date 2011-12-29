@@ -1,8 +1,6 @@
 Blog::Application.routes.draw do
   get "admin" => "admin#index"
-	get "articles/tag/:tag_id" => "articles#get_articles_by_tag_id"
-  get "about" => "evolutions#index"
-	get "acknowledge" => "acknowledges#index"
+  get "about" => "users#about"
 
   controller :sessions do
     get 'login' => :new
@@ -11,10 +9,11 @@ Blog::Application.routes.draw do
   end
 
   resources :users
-  resources :articles
-  resources :acknowledges
-  resources :evolutions
-
+  resources :articles do
+    collection do
+      get 'tagged/:tag_id', :action => 'tagged', :as => 'tagged'
+    end
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

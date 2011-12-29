@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 	skip_before_filter :authorize, :only => [:new, :create] unless User.all.count != 0
+	skip_before_filter :authorize, :only => [:about]
 
 	# GET /users
   # GET /users.xml
@@ -81,5 +82,8 @@ class UsersController < ApplicationController
       format.html { redirect_to(users_url) }
       format.xml  { head :ok }
     end
+  end
+
+  def about
   end
 end

@@ -1,0 +1,25 @@
+.topbar
+  .fill
+    .container
+      = link_to '杨海龙|ReyesYang', '/', :class =>'brand'
+      %ul.nav
+        %li.active
+          = link_to '首页', '/'
+        %li
+          = link_to '关于', '/about'
+      - if false
+        - if session[:user_id]
+          %form{:id => 'search-form', :action => '/search', 'accept-charset' => 'UTF-8'}
+            %input{:name => 'q', :type => 'text'}
+            %button{:type => 'submit'}
+      %ul#passage.nav
+        - if session[:user_id]
+          %li
+            = link_to '注销', logout_path, :confirm => 'Are you sure?', :method => :delete
+        - else
+          %li
+            = link_to '登录', login_path
+            
+%header#global_header
+  = link_to '/', :id => 'logo' do
+    = image_tag '/images/logo.jpg'

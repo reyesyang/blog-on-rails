@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  skip_before_filter :authorize, :only => [:index, :show, :get_articles_by_tag_id]
+  skip_before_filter :authorize, :only => [:index, :show, :tagged]
   # GET /articles
   # GET /articles.xml
   def index
@@ -86,7 +86,7 @@ class ArticlesController < ApplicationController
   end
 
 	# GET /articles/tag/1
-	def get_articles_by_tag_id
+	def tagged
 		@articles = Tag.find(params[:tag_id]).articles.paginate(:page => params[:page],
                                                             :order => 'created_at DESC',
                                                             :per_page => 7)

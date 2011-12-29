@@ -5,9 +5,12 @@
     %span.created_at<
       = t 'post_at'
       = article.created_at.in_time_zone(+8.hours).strftime('%D %T')
-    %span.tags<
-      = t 'tags'
-      = sanitize join_tags article
+    - if article.tags.any?
+      %span.tags
+        = t 'tags'
+        - article.tags.each do |tag|
+          = link_to  tagged_articles_url(tag) do
+            %span.label #{tag.name}
     -if session[:user_id]
       %span.operation
         = link_to t('edit'), edit_article_path(article)
@@ -16,4 +19,3 @@
     = link_to '>>' + t('more'), article
   %br/
   .clear
-

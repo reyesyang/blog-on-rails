@@ -1,0 +1,17 @@
+%aside
+  %section#aside_tags
+    %header.red_header
+      %h2= t 'tag_header'
+    - if @tags.any?
+      %ul.unstyled
+        - @tags.each do |tag|
+          %li<
+            = link_to tagged_articles_url(tag), :class=>'aside_tag' do
+              <span class='label'>#{tag.name}</span>
+            %span x #{tag.articles_count}
+    - else
+      No more tags now!
+
+.clear
+
+

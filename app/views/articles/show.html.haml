@@ -1,11 +1,11 @@
 %article.article
   %header.red_header
     %h2.article_title= @article.title
-    %span.created_at<
+    %span.created_at
       = t 'post_at'
       = @article.created_at.in_time_zone(+8.hours).strftime('%D %T')
     - if @article.tags.any?
-      %span.tags<
+      %span.tags
         = t 'tags'
         - @article.tags.each do |tag|
           = link_to tagged_articles_url(tag) do

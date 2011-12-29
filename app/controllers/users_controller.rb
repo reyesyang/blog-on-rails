@@ -82,4 +82,7 @@ class UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def about
+  end
 end

@@ -4,7 +4,6 @@
   %nav#global_nav
     = link_to t('home'), '/'
     = link_to t('about'), '/about'
-    = link_to t('acknowledge'), '/acknowledge'
     - if session[:user_id]
       = link_to t('logout'), logout_path, :confirm => 'Are you sure?', :method => :delete
 

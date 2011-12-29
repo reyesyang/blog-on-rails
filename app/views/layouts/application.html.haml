@@ -23,11 +23,9 @@
       })();
   
   %body
+    = render :partial => 'layouts/header'
     %section#main_wrapper
-      = render :partial => 'layouts/header'
-      
       %section#main_content= yield
-
       = render :partial => 'layouts/aside'
       = render :partial => 'layouts/footer'
 

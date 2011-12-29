@@ -1,0 +1,16 @@
+%aside
+  %section#aside_tags
+    %header.red_header
+      %h2= t 'tag_header'
+    - if @tags
+      - @tags.each do |tag|
+        = link_to tag.name, '/articles/tag/'+ tag.id.to_s, :class=>'aside_tag'
+        x
+        = tag.articles_count
+        %br/
+    - else
+      No more tags now!
+
+.clear
+
+

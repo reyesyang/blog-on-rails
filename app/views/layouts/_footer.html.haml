@@ -1,0 +1,12 @@
+%footer#global_footer
+  #cc
+    = t 'licence_prefix'
+    = link_to t('licence_link'), :rel => 'license', :target => '_blank' do
+      = image_tag '/images/cc_80x15.png', :alt => '知识共享许可协议', :id => 'cc_icon'
+      %strong= t 'licence'
+    = t 'licence_suffix'
+  #copy
+    = t 'current_version'
+    = @current_version
+    , &copy; 2011 
+    = t 'copy_right'

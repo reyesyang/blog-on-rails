@@ -4,8 +4,7 @@ class ArticlesController < ApplicationController
   # GET /articles.xml
   def index
     @articles = Article.includes(:tags).paginate(:page => params[:page],
-                                 :order => 'created_at desc',
-                                 :per_page => 7)
+                                                 :order => 'created_at desc')
 
     respond_to do |format|
       format.html # index.html.erb

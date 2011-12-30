@@ -85,5 +85,6 @@ class UsersController < ApplicationController
   end
 
   def about
+    @page_title = '关于'
   end
 end

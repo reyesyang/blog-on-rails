@@ -4,6 +4,8 @@ default: &default
   ga_account:
   disqus_developer: 1
   disqus_shortname:
+  default_title:
+  default_description:
 
 development:
   <<: *default

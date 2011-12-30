@@ -3,9 +3,9 @@
     .container
       = link_to '杨海龙|ReyesYang', '/', :class =>'brand'
       %ul.nav
-        %li{:class => ( action_name == 'index' ? 'active' : nil)}
+        %li{:class => (action_name == 'index' ? 'active' : nil)}
           = link_to '首页', '/'
-        %li{:class => ( action_name == 'about' ? 'active' : nil)}
+        %li{:class => (action_name == 'about' ? 'active' : nil)}
           = link_to '关于', '/about'
       - if false
         - if session[:user_id]

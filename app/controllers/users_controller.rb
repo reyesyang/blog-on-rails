@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	skip_before_filter :authorize, :only => [:new, :create] unless User.all.count != 0
-	skip_before_filter :authorize, :only => [:about]
+	skip_before_filter :authorize, :only => [:login, :logout, :about]
 
 	# GET /users
   # GET /users.xml
@@ -82,6 +82,21 @@ class UsersController < ApplicationController
       format.html { redirect_to(users_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  def login
+    user = User.find_by_name params[:name]
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect_to articles_url
+    else
+      redirect_to root_url
+    end
+  end
+
+  def logout
+    reset_session
+    redirect_to articles_url, :notice => "Logged our"
   end
 
   def about

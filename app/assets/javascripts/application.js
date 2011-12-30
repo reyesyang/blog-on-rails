@@ -8,3 +8,4 @@
 //= require jquery_ujs
 //= require rails.validations
 //= require global.js
+//= require bootstrap-dropdown.js

@@ -12,13 +12,25 @@
           %form{:id => 'search-form', :action => '/search', 'accept-charset' => 'UTF-8'}
             %input{:name => 'q', :type => 'text'}
             %button{:type => 'submit'}
-      %ul#passage.nav
+      %ul#passage.nav.secondary-nav
         - if session[:user_id]
           %li
             = link_to '注销', logout_path, :confirm => 'Are you sure?', :method => :delete
         - else
-          %li
-            = link_to '登录', login_path
+          %li.dropdown{'data-dropdown' => 'dropdown'}
+            %a.dropdown-toggle{:href => '#'} 登录
+            %ul.dropdown-menu
+              %li
+                = form_tag login_url do
+                  .field
+                    %label{:for => 'name'} 昵称：
+                    %br/
+                    = text_field_tag :name, params[:name]
+                  .field
+                    %label{:for => 'password'} 密码：
+                    %br/
+                    = password_field_tag :password, params[:password]
+                    %button{:type => 'submit'}
             
 %header#global_header
   = link_to '/', :id => 'logo' do

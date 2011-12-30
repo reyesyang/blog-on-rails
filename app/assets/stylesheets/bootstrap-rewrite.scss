@@ -43,7 +43,7 @@ code {
   font-size: 15px;
 }
 
-.topbar input:focus, .topbar input.focused {
+.topbar input, .topbar input:focus, .topbar input.focused {
   border: 1px solid #808080;
   background-color: #ffffff;
   color: #404040;
@@ -66,6 +66,9 @@ code {
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  .container {
+    width: 960px;
+  }
 }
 
 .topbar .brand {
@@ -107,6 +110,24 @@ code {
   background-color: #E3E3E3;
 }
 
+.dropdown {
+  &.open {
+    border-color: #D11D11 !important;
+    .dropdown-toggle {
+      color: #D11D11;
+    }
+  }
+}
+  
+.topbar div > ul .dropdown-menu {
+  max-width: 300px;
+  top: 30px;
+  background-color: #E3E3E3;
+  .field {
+    margin: 5px;
+  }
+}
+
 .field {
   margin-top: 20px;
 }
@@ -120,12 +141,12 @@ code {
 }
 
 .pagination {
-  height: 28px;
+  height: 24px;
   margin: 0;
-  background: #E3E3E3;
-  border: 1px solid #e5e5e5;
+  background: transparent;
+  border: 0px solid #e5e5e5;
   text-align: center;
-  padding: 7px;
+  padding: 0px;
   cursor: default;
   ul {
     float: left;
@@ -180,6 +201,10 @@ code {
 
 #passage {
   float: right;
+  margin: 0;
+  a {
+    padding: 0 0 0 10px;
+  }
 }
 
 #register_form {

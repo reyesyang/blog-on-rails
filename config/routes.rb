@@ -1,12 +1,7 @@
 Blog::Application.routes.draw do
-  get "admin" => "admin#index"
+  post 'login' => 'users#login'
+  delete 'logout' => 'users#logout'
   get "about" => "users#about"
-
-  controller :sessions do
-    get 'login' => :new
-    post 'login' => :create
-    delete 'logout' => :destroy
-  end
 
   resources :users
   resources :articles do

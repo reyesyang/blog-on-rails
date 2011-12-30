@@ -43,7 +43,7 @@ code {
   font-size: 15px;
 }
 
-.topbar input:focus, .topbar input.focused {
+.topbar input, .topbar input:focus, .topbar input.focused {
   border: 1px solid #808080;
   background-color: #ffffff;
   color: #404040;
@@ -66,6 +66,9 @@ code {
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  .container {
+    width: 960px;
+  }
 }
 
 .topbar .brand {
@@ -107,6 +110,24 @@ code {
   background-color: #E3E3E3;
 }
 
+.dropdown {
+  &.open {
+    border-color: #D11D11 !important;
+    .dropdown-toggle {
+      color: #D11D11;
+    }
+  }
+}
+  
+.topbar div > ul .dropdown-menu {
+  max-width: 300px;
+  top: 30px;
+  background-color: #E3E3E3;
+  .field {
+    margin: 5px;
+  }
+}
+
 .field {
   margin-top: 20px;
 }
@@ -119,6 +140,60 @@ code {
   background-color: #E3E3E3;
 }
 
+.pagination {
+  height: 24px;
+  margin: 0;
+  background: transparent;
+  border: 0px solid #e5e5e5;
+  text-align: center;
+  padding: 0px;
+  cursor: default;
+  ul {
+    float: left;
+    margin: 0;
+    border: 0;
+    border: 0px solid rgba(0, 0, 0, 0.15);
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 0 0px 0px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.05);
+    li {
+      display: block;
+      float: left;
+      a {
+        line-height: 1.5em;
+        font-size: 12px;
+        text-decoration: none;
+        color: #333333;
+        padding: 0;
+        margin: 0.3em 0.3em;
+        border: 0;
+        &:hover, &:focus {
+          background-color: transparent;
+          color: #D11D11;
+        }
+      }
+    }
+    li.active{
+      a {
+        font-style: normal;
+        font-weight: bold;
+        background-color: darken(#f1f1f1, 20);
+        display: inline-block;
+        width: 1.4em;
+        height: 1.4em;
+        line-height: 1.5em;
+        -moz-border-radius: 1em;
+        -webkit-border-radius: 1em;
+        border-radius: 1em;
+        text-shadow: rgba(white, .8) 1px 1px 1px;
+      }
+    }
+  }
+}
+
 /* Id */
 #search-form {
   float: right;
@@ -126,6 +201,10 @@ code {
 
 #passage {
   float: right;
+  margin: 0;
+  a {
+    padding: 0 0 0 10px;
+  }
 }
 
 #register_form {

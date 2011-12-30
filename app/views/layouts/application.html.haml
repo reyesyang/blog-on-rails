@@ -1,9 +1,9 @@
 !!! 5
 %html
   %head
-    %title= @page_title || "Blog"
-    %meta{:name => 'keywords', :content => "#{@keywords || 'Reyes Yang Blog'}" }
-    %meta{:name => 'description', :content => "#{@description || 'Reye Yang Blog'}"}
+    %title= "#{@page_title + ' - ' if @page_title}" + APP_CONFIG['default_title']
+    %meta{:charset => 'utf-8'}
+    %meta{:name => 'description', :content => "#{@page_description || APP_CONFIG['default_description']}"}
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
     - if content_for? :head
@@ -27,6 +27,6 @@
     %section#main_wrapper
       %section#main_content= yield
       = render :partial => 'layouts/aside'
-      = render :partial => 'layouts/footer'
+    = render :partial => 'layouts/footer'
 
      

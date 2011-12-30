@@ -66,3 +66,8 @@ zh_CN:
   licence_suffix: 进行许可。
   current_version: 本博客当前版本
   copy_right: reyesyang.info
+
+  will_paginate:
+    previous_label: "&#8592; 上一页"
+    next_label: "下一页 &#8594;"
+    page_gap: "&hellip;"

@@ -8,6 +8,8 @@ class Article < ActiveRecord::Base
   has_and_belongs_to_many :tags
 
   attr_accessible :title, :content, :tags_string, :english_title
+  
+  self.per_page = 10
   @@original_tags = nil
 
   def tags_string=(value)

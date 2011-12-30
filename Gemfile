@@ -30,7 +30,6 @@ gem 'will_paginate', '>=3.0.pre'
 gem 'bootstrap-will_paginate'
 gem 'wmd-rails'
 gem 'redcarpet'
-gem 'gravtastic'
 gem 'haml'
 
 # To use ActiveModel has_secure_password

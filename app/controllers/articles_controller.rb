@@ -4,8 +4,8 @@ class ArticlesController < ApplicationController
   # GET /articles.xml
   def index
     @articles = Article.includes(:tags).paginate(:page => params[:page],
-                                 :order => 'created_at desc',
-                                 :per_page => 7)
+                                                 :order => 'created_at desc')
+    @page_title = '首页'
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,6 +17,8 @@ class ArticlesController < ApplicationController
   # GET /articles/1.xml
   def show
     @article = Article.includes(:tags).find(params[:id])
+    @page_title = '文章 - ' + @article.english_title
+    @page_description = @article.title
 
     respond_to do |format|
       format.html # show.html.erb
@@ -28,6 +30,7 @@ class ArticlesController < ApplicationController
   # GET /articles/new.xml
   def new
     @article = Article.new
+    @page_title = '发布文章'
 
     respond_to do |format|
       format.html # new.html.erb
@@ -38,6 +41,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1/edit
   def edit
     @article = Article.includes(:tags).find(params[:id])
+    @page_title = '编辑文章 - ' + @article.english_title
   end
 
   # POST /articles
@@ -87,9 +91,10 @@ class ArticlesController < ApplicationController
 
 	# GET /articles/tag/1
 	def tagged
-		@articles = Tag.find(params[:tag_id]).articles.paginate(:page => params[:page],
-                                                            :order => 'created_at DESC',
-                                                            :per_page => 7)
+    tag = Tag.find params[:tag_id]
+    @articles = tag.articles.includes(:tags).paginate(:page => params[:page],
+                                      :order => 'created_at DESC')
+    @page_title = @page_description = '标签为' + tag.name + '的文章'
 
 		respond_to do |format|
 			format.html { render 'index' }

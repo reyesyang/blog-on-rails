@@ -5,6 +5,7 @@ log/*.log
 tmp/
 vendor/cache
 vendor/bundle
+package/
 config/database.yml
 config/app_config.yml
 config/deploy.rb

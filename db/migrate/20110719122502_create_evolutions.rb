@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateEvolutions < ActiveRecord::Migration
   def self.up
     create_table :evolutions do |t|

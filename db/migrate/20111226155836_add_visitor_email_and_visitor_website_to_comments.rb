@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddVisitorEmailAndVisitorWebsiteToComments < ActiveRecord::Migration
   def change
     add_column :comments, :visitor_email, :string

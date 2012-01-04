@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RenameHasedPasswordAndRemoveSaltInUser < ActiveRecord::Migration
   def up
     rename_column :users, :hashed_password, :password_digest

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class AddNameWebsiteAndImageUrlToAcknowledge < ActiveRecord::Migration
   def self.up
     add_column :acknowledges, :name, :string

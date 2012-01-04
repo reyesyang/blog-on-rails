@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module ApplicationHelper
   def format_text(text, options = {})
     sanitize markdown(link_mentions(text, options[:mention_names]))

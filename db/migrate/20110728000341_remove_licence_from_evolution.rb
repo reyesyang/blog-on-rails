@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RemoveLicenceFromEvolution < ActiveRecord::Migration
   def self.up
     remove_column :evolutions, :licence

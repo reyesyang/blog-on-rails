@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RemoveSummaryFromArticles < ActiveRecord::Migration
   def up
     remove_column :articles, :summary

@@ -27,7 +27,7 @@ gem 'twitter-bootstrap-rails'
 # gem "jk-ferret"
 # gem "rmmseg-cpp"
 gem 'will_paginate', '>=3.0.pre'
-gem 'bootstrap-will_paginate'
+# gem 'bootstrap-will_paginate'
 gem 'wmd-rails'
 gem 'redcarpet'
 gem 'haml'

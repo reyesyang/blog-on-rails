@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateArticlesTags < ActiveRecord::Migration
   def self.up
 		create_table :articles_tags, :id => false do |t|

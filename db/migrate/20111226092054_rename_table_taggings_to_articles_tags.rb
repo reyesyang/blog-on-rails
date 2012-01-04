@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RenameTableTaggingsToArticlesTags < ActiveRecord::Migration
   def self.up
     rename_table :taggings, :articles_tags

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class RemoveArticleIdFromTags < ActiveRecord::Migration
   def self.up
     remove_column :tags, :article_id

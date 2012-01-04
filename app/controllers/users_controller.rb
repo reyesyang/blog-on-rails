@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UsersController < ApplicationController
 	skip_before_filter :authorize, :only => [:new, :create] unless User.all.count != 0
 	skip_before_filter :authorize, :only => [:login, :logout, :about]

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 set :user, "your"
 set :application, "your"
 

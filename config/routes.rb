@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 Blog::Application.routes.draw do
   post 'login' => 'users#login'
   delete 'logout' => 'users#logout'

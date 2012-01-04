@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class ArticlesController < ApplicationController
   skip_before_filter :authorize, :only => [:index, :show, :tagged]
   # GET /articles

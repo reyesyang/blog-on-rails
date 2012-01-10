@@ -1,3 +1,9 @@
+//variables
+$main-red: #D11D11;
+$main-silver: #E3E3E3;
+$main-gray: #808080;
+$main-black: #333333;
+
 /* Element */
 body {
   padding-top: 30px;
@@ -120,11 +126,32 @@ code {
 }
   
 .topbar div > ul .dropdown-menu {
+  min-width: 100px;
   max-width: 300px;
   top: 30px;
   background-color: #E3E3E3;
   .field {
     margin: 5px;
+  }
+
+  li {
+    &.divider {
+      border-color: $main-red;
+      background-color: $main-red;
+    }
+
+    a {
+      font-size: 15px;
+      line-height: 20px;
+      text-shadow: none;
+      text-align: right;
+      padding: 0 10px;
+      &:hover {
+        color: #D11D11;
+        background: transparent;
+        box-shadow: none;
+      }
+    }
   }
 }
 
@@ -202,9 +229,6 @@ code {
 #passage {
   float: right;
   margin: 0;
-  a {
-    padding: 0 0 0 10px;
-  }
 }
 
 #register_form {

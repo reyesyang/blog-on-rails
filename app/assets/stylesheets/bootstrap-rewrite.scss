@@ -33,31 +33,31 @@ code {
   cursor: pointer;
   background-color: #E3E3E3;
 }
-.topbar {
+.navbar {
   height: 35px;
 }
 
-.topbar a {
+.navbar a {
   text-shadow: none;
 }
 
-.topbar form {
+.navbar form {
   margin: 3px 0 0 0;
 }
 
-.topbar input {
+.navbar input {
   border-color: #808080;
   font-size: 15px;
 }
 
-.topbar input, .topbar input:focus, .topbar input.focused {
+.navbar input, .topbar input:focus, .topbar input.focused {
   border: 1px solid #808080;
   background-color: #ffffff;
   color: #404040;
   padding: 4px 9px;
 }
 
-.topbar .fill {
+.navbar .navbar-inner {
   background-color: #E3E3E3;
   height: 35px;
   
@@ -78,40 +78,41 @@ code {
   }
 }
 
-.topbar .brand {
+.navbar .brand {
   padding: 7px 0 0 0;
   margin: 0 30px 0 0;
   color: #333333;
   font-family: courier;
 }
 
-.topbar div > ul a, .nav a {
+.navbar div > ul a, .nav a {
   padding: 0 10px;
   border-width: 5px 0;
 }
 
-.topbar .nav > li {
+.navbar .nav > li {
   border-width: 4px 0 0 0;
   border-style: solid;
   border-color: #E3E3E3;
   padding-top: 3px;
 }
 
-.topbar .nav > li > a {
+.navbar .nav > li > a {
   color: #808080; /*gray*/
   font-size: 15px;
+  padding: 0 10px;
 }
 
-.topbar .nav > li > a:hover {
+.navbar .nav > li > a:hover {
   color: #D11D11;
 }
 
-.topbar .nav > li.active {
+.navbar .nav > li.active {
   border-color: #D11D11;
   background-color: #E3E3E3;
 }
 
-.topbar .nav > li.active > a {
+.navbar .nav > li.active > a {
   color: #D11D11;
   font-weight: bold; 
   background-color: #E3E3E3;
@@ -126,7 +127,7 @@ code {
   }
 }
   
-.topbar div > ul .dropdown-menu {
+.navbar div > ul .dropdown-menu {
   min-width: 100px;
   max-width: 300px;
   top: 30px;
@@ -154,10 +155,6 @@ code {
       }
     }
   }
-}
-
-.field {
-  margin-top: 20px;
 }
 
 .message {
@@ -234,4 +231,14 @@ code {
 
 #register_form {
   margin: 10px 20px 10px 150px;
+}
+
+#login-form {
+  form {
+    margin-bottom: 0;
+    .field {
+      width: 250px;
+      float: left;
+    }
+  }
 }

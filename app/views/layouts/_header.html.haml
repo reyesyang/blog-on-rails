@@ -1,5 +1,5 @@
-.topbar
-  .fill
+.navbar.navbar-fixed-top
+  .navbar-inner
     .container
       = link_to '杨海龙|ReyesYang', '/', :class =>'brand'
       %ul.nav
@@ -14,8 +14,10 @@
             %button{:type => 'submit'}
       %ul#passage.nav.secondary-nav
         - if session[:user_id]
-          %li.dropdown{'data-dropdown' => 'dropdown'}
-            %a.dropdown-toggle{:href => '#'}= current_user.name
+          %li.dropdown
+            %a.dropdown-toggle{:href => '#', 'data-toggle' => 'dropdown'}
+              = current_user.name
+              %b.caret
             %ul.dropdown-menu
               %li
                 = link_to '编辑', edit_user_url(current_user)
@@ -23,21 +25,25 @@
               %li
                 = link_to '注销', logout_path, :confirm => 'Are you sure?', :method => :delete
         - else
-          %li.dropdown{'data-dropdown' => 'dropdown'}
-            %a.dropdown-toggle{:href => '#'} 登录
-            %ul.dropdown-menu
-              %li
-                = form_tag login_url do
-                  .field
-                    %label{:for => 'name'} 昵称：
-                    %br/
-                    = text_field_tag :name, params[:name]
-                  .field
-                    %label{:for => 'password'} 密码：
-                    %br/
-                    = password_field_tag :password, params[:password]
-                    %button{:type => 'submit'}
-            
+          %li
+            %a{:href => '#login-form', 'data-toggle' => 'modal'} 登录
+                        
 %header#global_header
   = link_to '/', :id => 'logo' do
     = image_tag '/images/logo.jpg'
+#login-form.modal.fade
+  = form_tag login_url do
+    .modal-header
+      %a.close{'data-dismiss' => 'modal'} x
+      %h3 管理员登录
+    .modal-body
+      .field
+        %label{:for => 'name'} 昵称：
+        = text_field_tag :name, params[:name]
+      .field
+        %label{:for => 'password'} 密码：
+        = password_field_tag :password, params[:password]
+      .clear
+    .modal-footer
+      %button.btn{:type => 'submit'} 登录
+

@@ -7,5 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require rails.validations
+//= require twitter/bootstrap/bootstrap-modal.js
+//= require twitter/bootstrap/bootstrap-transition.js
+//= require twitter/bootstrap/bootstrap-dropdown.js
 //= require global.js
-//= require bootstrap-dropdown.js

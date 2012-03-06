@@ -13,9 +13,9 @@
     = render :partial => 'layouts/google_analytics'
 
   %body
-    = render :partial => 'layouts/header'
-    %section#main_wrapper
-      %section#main_content= yield
+    %section#main-wrapper
       = render :partial => 'layouts/aside'
+      %section#main-content= yield
+      .clearfix
     = render :partial => 'layouts/footer'
     = yield :js

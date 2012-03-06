@@ -3,7 +3,7 @@
   padding: 0;
 }
 
-article,aside,dialog,footer,header,section,footer,nav,figure,menu{ 
+article,aside,dialog,footer,header,section,footer,nav,figure,menu{
   display: block;
 }
 
@@ -17,37 +17,32 @@ a:hover {
   color: #D11D1A;
 }
 
-/* */
 body {
-  background-image: url("/assets/bg.png");
+  background-image: url('/assets/bg-content.png');
 }
 
-#main_wrapper {
-  background-color: #FFFFFF;
+html {
+  overflow-y: scroll;
+}
+
+#main-wrapper {
+  background-color: transparent;
   width: 960px;
   min-width: 960px;
-  margin: 0 auto;
-}
-
-img {
-  border: none;
-}
-
-img:hover {
-  border: none;
-}
-
-#global_header {
-  width: 960px;
-  height: 200px;
-  border-width: 0 0 1px 0;
-  border-style: solid;
-  margin: 0 auto 10px auto;
+  margin: 30px auto;
 }
 
 #logo {
-  position: relative;
-  top: 20px;
+  height: 60px;
+  width: 60px;
+  display: block;
+  text-indent: -1000px;
+  background-image: url('/assets/logo.jpeg');
+}
+
+#me {
+  border-top: 3px solid #D11D11;
+  margin: 10px 0;
 }
 
 #login {
@@ -77,26 +72,16 @@ img:hover {
   height: 23px;
 }
 
-.field input {
-  /*width: 75%;*/
-}
-
-nav {
-  height: 18px;
+#main-content {
+  width: 75%;
+  min-height: 500px;
   float: right;
-  border-width: 0 1px 1px 1px;
-  border-style: solid;
-  font-size: 18px;
-  padding: 10px 10px;
+  padding: 0 0 0 20px;
+  border-left: 1px solid gray;
 }
 
-#main_content {
-  width: 71%;
-  float: left;
-  margin: 0 0 10px 0;
-  padding: 0 10px;
-  border-width: 0 1px 0 0;
-  border-style: solid;
+#passage {
+  float: right;
 }
 
 .article {
@@ -198,10 +183,6 @@ nav {
   height: 60px;
 }
 
-.clear {
-  clear: both;
-}
-
 article footer {
   border-width: 0;
 }
@@ -210,9 +191,10 @@ article footer {
   width: 670px;
 }
 
-aside {
-  width: 25%;
-  float: right;
+#global-aside {
+  width: 15%;
+  float: left;
+  position: fixed;
 }
 
 #aside_tags h2 {
@@ -232,17 +214,11 @@ aside {
   /*color: #333333;*/
 }
 
-.clear {
-  clear: both;
-}
-
 /* footer */
 footer {
-  border-width: 1px 0 0 0;
-  border-style: solid;
   padding: 10px;
+  border-top: 1px solid gray;
   text-align: center;
-  background-color: #E3E3E3;
 }
 
 #cc {

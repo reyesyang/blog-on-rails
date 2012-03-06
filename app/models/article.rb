@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Article < ActiveRecord::Base
+  attr_accessible :title, :content, :tags_string, :english_title
   before_save :update_articles_count_on_tags_bf_save
   before_destroy :update_articles_count_on_tags_bf_destroy
 
@@ -7,8 +8,6 @@ class Article < ActiveRecord::Base
   validates :english_title, :uniqueness => true
 
   has_and_belongs_to_many :tags
-
-  attr_accessible :title, :content, :tags_string, :english_title
   
   self.per_page = 10
   @@original_tags = nil

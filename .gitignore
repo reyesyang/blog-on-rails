@@ -9,4 +9,3 @@ package/
 config/database.yml
 config/app_config.yml
 config/deploy.rb
-

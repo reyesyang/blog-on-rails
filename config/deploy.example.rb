@@ -3,7 +3,6 @@ set :user, "your"
 set :application, "your"
 
 # If you use rvm, please uncomment the following 4 lines 
-# $:.unshift(File.expand_path('./lib', ENV['rvm_path'])) # Add RVM's lib directory to the load path.
 # require "rvm/capistrano"                  # Load RVM's capistrano plugin.
 # set :rvm_path, "/home/#{user}/.rvm"
 # set :rvm_bin_path, "/home/#{user}/.rvm/bin"        # Or whatever env you want it to run in.
@@ -45,6 +44,7 @@ namespace :deploy do
 end
 
 after "deploy:update_code" do
+  run "cp #{deploy_to}/shared/config/*.yml #{release_path}/config" # So we need cp config files to share config folder manually first
   run "cd #{release_path} && bundle install"
   run "cd #{release_path}; RAILS_ENV=production rake assets:precompile"
 end

@@ -1,28 +1,11 @@
 %aside#global-aside
-  #login-form.modal.fade
-    = form_tag login_url do
-      .modal-header
-        %a.close{'data-dismiss' => 'modal'} x
-        %h3 管理员登录
-      .modal-body
-        .field
-          %label{:for => 'name'} 昵称：
-          = text_field_tag :name, params[:name]
-        .field
-          %label{:for => 'password'} 密码：
-          = password_field_tag :password, params[:password]
-        .clearfix
-      .modal-footer
-        %button.btn{:type => 'submit'} 登录
   %header
     = link_to 'Reyes Yang', '/', :id => 'logo'
-    %h2#me
+    %h3#me
       = link_to '吾', '/about'
       #passage
-        - if session[:user_id]
+        - if logined?
           = link_to '注销', logout_path, :confirm => 'Are you sure?', :method => :delete
-        - else
-          %a{:href => '#login-form', 'data-toggle' => 'modal'} 登录
 
 
   %section#aside_tags

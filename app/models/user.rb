@@ -2,9 +2,12 @@
 require 'digest/sha2'
 
 class User < ActiveRecord::Base
-  has_secure_password
-  attr_accessible :name, :password, :password_confirmation
+  attr_accessible :name, :email, :image_url
+  has_many :authorizations
 
-  validates :name, :presence => true, :uniqueness => true
-  validates :password_confirmation, :presence => true, :on => :create
+  validates :name, :email, :presence => true
+
+  def admin?
+    email == APP_CONFIG['admin_email']
+  end
  end

@@ -1,6 +1,6 @@
 %article.article
   %header
-    %h2.article_title= @article.title
+    %h3.article_title= @article.title
     %span.created_at
       = t 'post_at'
       = @article.created_at.in_time_zone(+8.hours).strftime('%D %T')
@@ -10,7 +10,7 @@
         - @article.tags.each do |tag|
           = link_to tagged_articles_url(tag) do
             %span.label #{tag.name}
-    -if session[:user_id]
+    -if logined? && current_user.admin?
       %span.operation
         = link_to t('edit'), edit_article_path(@article)
         = link_to t('back'), articles_path

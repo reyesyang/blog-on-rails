@@ -1,6 +1,6 @@
 %article.article
   %header
-    %h2.article_title
+    %h3.article_title
       = link_to article.title, article_url(article)
     %span.created_at<
       = t 'post_at'
@@ -11,11 +11,8 @@
         - article.tags.each do |tag|
           = link_to  tagged_articles_url(tag) do
             %span.label #{tag.name}
-    -if session[:user_id]
+    -if logined? && current_user.admin?
       %span.operation
         = link_to t('edit'), edit_article_path(article)
         = link_to t('destroy'), article, :confirm => 'Are you sure?', :method => :delete
-  %span.operation
-    = link_to '>>' + t('more'), article
-  %br/
   .clear

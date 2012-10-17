@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1.xml
   def show
     @article = Article.includes(:tags).find(params[:id])
-    @page_title = '文章 - ' + @article.english_title
+    @page_title = '文章 - ' + @article.title
     @page_description = @article.title
 
     respond_to do |format|
@@ -42,7 +42,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1/edit
   def edit
     @article = Article.includes(:tags).find(params[:id])
-    @page_title = '编辑文章 - ' + @article.english_title
+    @page_title = '编辑文章 - ' + @article.title
   end
 
   # POST /articles

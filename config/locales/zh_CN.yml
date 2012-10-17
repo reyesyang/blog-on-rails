@@ -71,3 +71,12 @@ zh_CN:
     previous_label: "&#8592; 上一页"
     next_label: "下一页 &#8594;"
     page_gap: "&hellip;"
+
+  unauthorized:
+    manage:
+      all: 您无权访问 %{action} %{subject}
+      user: 您无权操作用户信息
+    update:
+      article: 您无权更新文章
+    create:
+      article: 您无权发表文章

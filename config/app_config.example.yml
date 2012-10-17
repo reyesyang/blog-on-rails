@@ -5,6 +5,7 @@ default: &default
   disqus_shortname:
   default_title:
   default_description:
+  admin_email:
   google_client_id:
   google_client_secret:
   twitter_consumer_key:

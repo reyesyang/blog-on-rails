@@ -10,4 +10,4 @@ class User < ActiveRecord::Base
   def admin?
     email == APP_CONFIG['admin_email']
   end
- end
+end

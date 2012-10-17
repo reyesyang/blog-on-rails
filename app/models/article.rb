@@ -1,11 +1,10 @@
 # -*- encoding : utf-8 -*-
 class Article < ActiveRecord::Base
-  attr_accessible :title, :content, :tags_string, :english_title
+  attr_accessible :title, :content, :tags_string
   before_save :update_articles_count_on_tags_bf_save
   before_destroy :update_articles_count_on_tags_bf_destroy
 
   validates :title, :content, :presence => true
-  validates :english_title, :uniqueness => true
 
   has_and_belongs_to_many :tags
   
@@ -22,10 +21,6 @@ class Article < ActiveRecord::Base
 
   def tags_string
     self.tags.map(&:name).join('; ')
-  end
-
-  def to_param
-    "#{id}-#{english_title.parameterize}"
   end
 
   private

@@ -1,5 +1,4 @@
-# source 'http://rubygems.org'
-source 'http://ruby.taobao.org'
+source 'http://rubygems.org'
 
 gem 'rails', '~> 3.2.1'
 
@@ -31,6 +30,14 @@ gem 'will_paginate', '>=3.0.pre'
 gem 'wmd-rails'
 gem 'redcarpet'
 gem 'haml'
+
+# third party login
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-twitter'
+gem 'omniauth-github'
+gem 'omniauth-xiaonei'
+gem 'omniauth-douban-oauth2'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'

@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :authorize
+  #before_filter :authorize
 	before_filter :get_tags
 
   helper_method :current_user

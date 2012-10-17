@@ -62,7 +62,6 @@ Blog::Application.routes.draw do
   delete 'logout' => 'users#logout'
   get "about" => "users#about"
 
-  resources :users
   resources :articles do
     collection do
       get 'tagged/:tag_id', :action => 'tagged', :as => 'tagged'

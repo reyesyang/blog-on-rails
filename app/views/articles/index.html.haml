@@ -1,4 +1,10 @@
--if session[:user_id]
+-%w(success error info).each do |type|
+  -if flash[type.to_sym]
+    %div{class: "alert alert-#{ type }"}
+      %a{class: "close", "data-dismiss" => "alert", href: "#"}×
+      = raw flash[type.to_sym]
+
+-if logined? && current_user.admin?
   .top_operation= link_to t('new_article'), new_article_path
 
 = render @articles

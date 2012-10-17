@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_authorize_resource
   def create
     omniauth = request.env['omniauth.auth']
     auth = Authorization.where(provider: omniauth['provider'], uid: omniauth['uid']).first_or_create do |auth|

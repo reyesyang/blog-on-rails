@@ -39,6 +39,9 @@ gem 'omniauth-github'
 gem 'omniauth-xiaonei'
 gem 'omniauth-douban-oauth2'
 
+# permission control
+gem "cancan"
+
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 

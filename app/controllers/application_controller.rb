@@ -1,24 +1,24 @@
 # -*- encoding : utf-8 -*-
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  #before_filter :authorize
+  authorize_resource
 	before_filter :get_tags
 
-  helper_method :current_user
+  helper_method :current_user, :logined?
 
   def current_user
     @current_user || User.find_by_id(session[:user_id])
   end
 
-  protected
-  def authorize
-    @current_user = User.find_by_id(session[:user_id])
-
-    unless @current_user
-      redirect_to login_url
-    end
+  def logined?
+    !!current_user
+  end
+  
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, flash: { error: exception.message }
   end
 
+  protected
   def get_tags
     @tags = Tag.all
   end

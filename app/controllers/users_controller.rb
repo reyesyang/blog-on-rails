@@ -97,7 +97,7 @@ class UsersController < ApplicationController
 
   def logout
     reset_session
-    redirect_to articles_url, :notice => "Logged our"
+    redirect_to articles_url
   end
 
   def about

@@ -69,7 +69,7 @@ html {
 }
 
 #main-content {
-  width: 75%;
+  width: 80%;
   min-height: 500px;
   float: right;
   padding: 0 0 0 20px;
@@ -85,6 +85,12 @@ html {
   border-style: solid;
   border-color: silver;
   margin: 0 0 10px 0;
+  header {
+    padding: 0 0 10px 0;
+    .created_at {
+      float: right;
+    }
+  }
 }
 
 .article .tags .label {
@@ -115,10 +121,6 @@ html {
 
 .article_content {
   margin: 10px 0;
-}
-
-.tags {
-  margin-left: 40px;
 }
 
 .operation {
@@ -188,7 +190,7 @@ article footer {
 }
 
 #global-aside {
-  width: 15%;
+  width: 10%;
   float: left;
   position: fixed;
 }

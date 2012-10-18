@@ -64,7 +64,7 @@ Blog::Application.routes.draw do
 
   resources :articles do
     collection do
-      get 'tagged/:tag_id', :action => 'tagged', :as => 'tagged'
+      get 'tagged/:tag', :action => 'tagged', :as => 'tagged'
     end
   end
 

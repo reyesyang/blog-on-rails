@@ -92,9 +92,10 @@ class ArticlesController < ApplicationController
 
 	# GET /articles/tag/1
 	def tagged
-    tag = Tag.find params[:tag_id]
+    #tag = Tag.find params[:tag_id]
+    tag = Tag.find_by_name params[:tag]
     @articles = tag.articles.includes(:tags).paginate(:page => params[:page],
-                                      :order => 'created_at DESC')
+                                                      :order => 'created_at DESC')
     @page_title = @page_description = '标签为' + tag.name + '的文章'
 
 		respond_to do |format|

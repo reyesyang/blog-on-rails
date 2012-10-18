@@ -8,6 +8,7 @@ class Ability
     else
       can :read, :all
       can :tagged, Article
+      can :logout, User
     end
   end
 end

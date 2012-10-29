@@ -34,7 +34,8 @@ class ArticlesController < ApplicationController
     @page_title = '发布文章'
 
     respond_to do |format|
-      format.html # new.html.erb
+      #format.html
+      format.html { render layout: 'wide' }
       format.xml  { render :xml => @article }
     end
   end
@@ -43,6 +44,7 @@ class ArticlesController < ApplicationController
   def edit
     @article = Article.includes(:tags).find(params[:id])
     @page_title = '编辑文章 - ' + @article.title
+    render layout: 'wide'
   end
 
   # POST /articles

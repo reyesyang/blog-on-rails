@@ -265,3 +265,33 @@ select,
 .uneditable-input {
   color: #333333;
 }
+
+#wide-main-wrapper {
+  width: 96%;
+  padding: 0 20px;
+  #edit-area {
+    width: 48%;
+    float: left;
+    .field {
+      input, textarea {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+
+    textarea {
+      line-height: 22px;
+    }
+  }
+
+  #preview-area {
+    width: 48%;
+    margin-top: 110px;
+    float: right;
+    line-height: 22px;
+    font-size: 14px;
+    #wmd-preview {
+      word-wrap: break-word;
+    }
+  }
+}

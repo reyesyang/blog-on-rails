@@ -3,10 +3,12 @@
   = stylesheet_link_tag 'wmd-editor'
 
 = form_for @article do |f|
-  .field= f.text_field :title, :class => 'left-full-width'
-  .field= f.text_field :tags_string, :class => 'left-full-width'
-  .field
-    #wmd-button-bar.left-full-width
-    = f.text_area :content, :id => 'wmd', :class => 'left-full-width'
-  #wmd-preview.left-full-width
-  .actions= f.submit t('post_article'), :class => 'btn'
+  #edit-area
+    .field= f.text_field :title
+    .field= f.text_field :tags_string
+    .field
+      #wmd-button-bar
+      = f.text_area :content, :id => 'wmd', cols: 80, rows: 13
+    .actions= f.submit t('post_article'), :class => 'btn'
+  #preview-area
+    #wmd-preview

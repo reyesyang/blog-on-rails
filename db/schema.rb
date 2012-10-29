@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(:version => 20121017120144) do
 
   create_table "acknowledges", :force => true do |t|
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "name"
     t.string   "website"
     t.string   "image_url"
@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(:version => 20121017120144) do
   create_table "articles", :force => true do |t|
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "articles_tags", :id => false, :force => true do |t|
@@ -46,31 +46,31 @@ ActiveRecord::Schema.define(:version => 20121017120144) do
     t.string   "visitor_name"
     t.text     "content"
     t.integer  "article_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.string   "visitor_email"
     t.string   "visitor_website"
   end
 
   create_table "evolutions", :force => true do |t|
     t.text     "change"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "version"
   end
 
   create_table "tags", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.integer  "articles_count", :default => 0
   end
 
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "auth_token"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "email"
     t.string   "image_url"
   end

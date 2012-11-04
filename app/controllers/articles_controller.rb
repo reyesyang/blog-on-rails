@@ -4,8 +4,10 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.xml
   def index
-    @articles = Article.includes(:tags).paginate(:page => params[:page],
-                                                 :order => 'created_at desc')
+    @articles = current_user && current_user.admin? ?
+      Article.includes(:tags).order('articles.id DESC').paginate(:page => params[:page]) :
+      Article.includes(:tags).where("tags.name != 'draft'").order('articles.id DESC').paginate(:page => params[:page])
+
     @page_title = '首页'
 
     respond_to do |format|

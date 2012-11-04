@@ -20,6 +20,8 @@ class ApplicationController < ActionController::Base
 
   protected
   def get_tags
-    @tags = Tag.all
+    @tags = current_user && current_user.admin? ?
+      Tag.all :
+      Tag.where("name != 'draft'")
   end
 end

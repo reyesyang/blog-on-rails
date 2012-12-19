@@ -4,9 +4,11 @@ class Article < ActiveRecord::Base
   before_save :update_articles_count_on_tags_bf_save
   before_destroy :update_articles_count_on_tags_bf_destroy
 
+  has_and_belongs_to_many :tags
+  
   validates :title, :content, :presence => true
 
-  has_and_belongs_to_many :tags
+  default_scope order('articles.id DESC')
   
   self.per_page = 10
   @@original_tags = nil
@@ -21,6 +23,10 @@ class Article < ActiveRecord::Base
 
   def tags_string
     self.tags.map(&:name).join('; ')
+  end
+
+  def draft?
+    tags.any?{|tag| tag.name == 'draft'}
   end
 
   private

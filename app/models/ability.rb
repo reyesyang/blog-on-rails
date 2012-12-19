@@ -8,6 +8,7 @@ class Ability
       can :manage, :all
     else
       can :create, :session
+      can :about, User
       can :read, Article
       can :read, Tag
       cannot :show, Article do |article|

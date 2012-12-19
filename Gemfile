@@ -22,6 +22,7 @@ gem 'execjs'
 gem 'therubyracer'
 gem 'client_side_validations'
 gem 'twitter-bootstrap-rails'
+gem 'less-rails'
 # gem "acts_as_ferret", :git => "https://github.com/jkraemer/acts_as_ferret.git"
 # gem "jk-ferret"
 # gem "rmmseg-cpp"

@@ -7,5 +7,6 @@
 -if logined? && current_user.admin?
   .top_operation= link_to t('new_article'), new_article_path
 
-= render @articles
-= will_paginate @articles
+- if @articles
+  = render @articles
+  = will_paginate @articles

@@ -1,8 +1,7 @@
 # -*- encoding : utf-8 -*-
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  authorize_resource
-	before_filter :get_tags
+  check_authorization
 
   helper_method :current_user, :logined?
 
@@ -16,12 +15,5 @@ class ApplicationController < ActionController::Base
   
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, flash: { error: exception.message }
-  end
-
-  protected
-  def get_tags
-    @tags = current_user && current_user.admin? ?
-      Tag.all :
-      Tag.where("name != 'draft'")
   end
 end

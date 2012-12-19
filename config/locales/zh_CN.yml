@@ -73,10 +73,16 @@ zh_CN:
     page_gap: "&hellip;"
 
   unauthorized:
-    manage:
-      all: 您无权访问 %{action} %{subject}
-      user: 您无权操作用户信息
-    update:
-      article: 您无权更新文章
+    new:
+      article: 您无权发表文章
     create:
       article: 您无权发表文章
+    edit:
+      article: 您无权编辑文章
+    update:
+      article: 您无权编辑文章
+    show:
+      article: 草稿只对管理员可见
+      tag: 草稿只对管理员可见
+    manage:
+      all: 您无权访问 %{action} %{subject}

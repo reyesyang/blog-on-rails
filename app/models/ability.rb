@@ -2,19 +2,19 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= User.new # guest user (not logged in)
+    user ||= User.new
+      
     if user.admin?
       can :manage, :all
     else
-      can :read, :all
-      can :tagged, Article
-      can :logout, User
+      can :read, Article
+      can :read, Tag
       cannot :show, Article do |article|
-        article.tags.any?{|tag| tag.name == 'draft'}
+        article.draft?
       end
-
-      cannot :tagged, Article do |article|
-        article.tags.any?{|tag| tag.name == 'draft'}
+      
+      cannot :show, Tag do |tag|
+        tag.name == 'draft'
       end
     end
   end

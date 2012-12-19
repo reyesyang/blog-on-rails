@@ -7,4 +7,12 @@ class Tag < ActiveRecord::Base
   def to_param
     name
   end
+
+  def self.list(user)
+    if user && user.admin?
+      Tag.all
+    else
+      Tag.where("name != 'draft'").all
+    end
+  end
 end

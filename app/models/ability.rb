@@ -7,6 +7,7 @@ class Ability
     if user.admin?
       can :manage, :all
     else
+      can :create, :session
       can :read, Article
       can :read, Tag
       cannot :show, Article do |article|

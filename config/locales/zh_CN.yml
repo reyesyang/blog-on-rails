@@ -68,8 +68,8 @@ zh_CN:
   copy_right: reyesyang.info
 
   will_paginate:
-    previous_label: "&#8592; 上一页"
-    next_label: "下一页 &#8594;"
+    previous_label: "&laquo;"
+    next_label: "&raquo;"
     page_gap: "&hellip;"
 
   unauthorized:

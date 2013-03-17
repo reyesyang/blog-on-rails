@@ -39,7 +39,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(params[:article])
+    @article = Article.new(article_params)
     
     respond_to do |format|
       if @article.save
@@ -52,7 +52,7 @@ class ArticlesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @article.update_attributes(params[:article])
+      if @article.update_attributes(article_params)
         format.html { redirect_to(@article, :notice => 'Article was successfully updated.') }
       else
         format.html { render :action => "edit" }
@@ -70,7 +70,11 @@ class ArticlesController < ApplicationController
   end
 
   private
-  def load_article_with_tags
-    @article = Article.includes(:tags).find(params[:id])
-  end
+    def load_article_with_tags
+      @article = Article.includes(:tags).find(params[:id])
+    end
+
+    def article_params
+      params.require(:article).permit(:title, :content, :tags_string)
+    end
 end

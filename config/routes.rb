@@ -7,5 +7,5 @@ Blog::Application.routes.draw do
   resources :articles
   resources :tags, only: [:show]
 
-  match '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/:provider/callback', to: 'sessions#create'
 end

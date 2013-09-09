@@ -8,14 +8,8 @@ default: &default
   admin_email:
   google_client_id:
   google_client_secret:
-  twitter_consumer_key:
-  twitter_consumer_secret:
   github_client_id:
   github_client_secret:
-  renren_api_key:
-  renren_secret_key:
-  douban_api_key:
-  douban_secret:
 
 development:
   <<: *default

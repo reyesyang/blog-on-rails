@@ -33,7 +33,7 @@ html {
   width: 60px;
   display: block;
   text-indent: -1000px;
-  background-image: url('/assets/logo.jpeg');
+  background-image: asset-url('logo.jpeg');
 }
 
 #me {

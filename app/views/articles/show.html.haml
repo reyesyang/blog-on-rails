@@ -15,6 +15,7 @@
         = link_to t('edit'), edit_article_path(@article)
         = link_to t('back'), articles_path
 
-  .article_content= format_text @article.content
+  .article_content
+    ~ format_text @article.content
 
 = render :partial => 'layouts/disque'

@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  check_authorization
+  skip_before_filter :verify_authenticity_token, :only => :create
 
   helper_method :current_user, :logined?
 
@@ -12,8 +12,10 @@ class ApplicationController < ActionController::Base
   def logined?
     !!current_user
   end
-  
-  rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, flash: { error: exception.message }
+
+  private
+
+  def require_admin
+    redirect_to root_path if !(logined? && current_user.admin?)
   end
 end

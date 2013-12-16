@@ -7,7 +7,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require rails.validations
 //= require global.js
 //= require timeago
 //= require jquery.autogrowtextarea

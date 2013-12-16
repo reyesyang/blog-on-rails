@@ -1,26 +1,18 @@
 # -*- encoding : utf-8 -*-
 module ApplicationHelper
   def format_text(text, options = {})
-    sanitize markdown(link_mentions(text, options[:mention_names]))
+    sanitize markdown(text)
   end
 
   def markdown(text)
-    markdown_render = Redcarpet::Render::HTML.new :hard_wrap => true, :no_styles => true
+    markdown_render = Redcarpet::Render::HTML.new no_style: true, hard_wrap: true
     markdown = Redcarpet::Markdown.new(markdown_render,
-                                       :autolink => true,
-                                       :no_intra_emphasis => true)
+                                       autolink: true,
+                                       no_intra_emphasis: true,
+                                       fenced_code_blocks: true,
+                                       strikethrough: true,
+                                       superscript: true)
     markdown.render(text.to_s)
-  end
-  
-  def link_mentions(text, mention_names)
-    if mention_names && mention_names.any?
-      text.gsub(/@(#{mention_names.join('|')})(?![.\w])/) do
-        username = $1
-        %Q[@<a href="/~#{username}">#{username}</a>]
-      end
-    else
-      text
-    end
   end
   
   def join_tags(article)

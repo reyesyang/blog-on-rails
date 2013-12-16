@@ -1,12 +1,12 @@
 # -*- encoding : utf-8 -*-
 class ArticlesController < ApplicationController
+  before_filter :require_admin, only: [:new, :create, :edit, :update, :destroy]
   before_filter :load_article_with_tags, only: [:show, :edit]
-  load_and_authorize_resource
 
   def index
     @articles = current_user && current_user.admin? ?
-      @articles.includes(:tags).paginate(:page => params[:page]) :
-      @articles.includes(:tags).where("tags.name != 'draft'").paginate(:page => params[:page])
+      Article.includes(:tags).order("articles.id DESC").paginate(:page => params[:page]) :
+      Article.includes(:tags).where("tags.name != 'draft'").order("articles.id DESC").paginate(:page => params[:page])
 
     @page_title = '首页'
 
@@ -51,6 +51,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    @article = Article.find params[:id]
     respond_to do |format|
       if @article.update_attributes(article_params)
         format.html { redirect_to(@article, :notice => 'Article was successfully updated.') }
@@ -61,6 +62,7 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+    @article = Article.find params[:id]
     @article.destroy
 
     respond_to do |format|

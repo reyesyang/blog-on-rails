@@ -1,6 +1,4 @@
 class SessionsController < ApplicationController
-  authorize_resource :class => false
-
   def create
     omniauth = request.env['omniauth.auth']
     auth = Authorization.where(provider: omniauth['provider'], uid: omniauth['uid']).first_or_create do |auth|
@@ -10,16 +8,6 @@ class SessionsController < ApplicationController
     
     session[:user_id] = auth.user.id
     redirect_to root_path
-  end
-  
-  def login
-    user = User.find_by_name params[:name]
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      redirect_to articles_url
-    else
-      redirect_to root_url
-    end
   end
 
   def logout

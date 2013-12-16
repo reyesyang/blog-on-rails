@@ -29,7 +29,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.5.1'
 
 gem 'execjs'
-gem 'client_side_validations'
 gem 'twitter-bootstrap-rails'
 gem 'less-rails'
 # gem "acts_as_ferret", :git => "https://github.com/jkraemer/acts_as_ferret.git"
@@ -46,9 +45,6 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-github'
 
-# permission control
-gem "cancan"
-
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.0'
 
@@ -63,6 +59,7 @@ gem 'rvm-capistrano'
 # gem 'ruby-debug'
 
 group :development, :test do
+  gem 'quiet_assets'
   gem 'factory_girl_rails'
   gem 'pry-rails'
 end

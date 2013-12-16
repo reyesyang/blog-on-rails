@@ -14,5 +14,5 @@
     -if logined? && current_user.admin?
       %span.operation
         = link_to t('edit'), edit_article_path(article)
-        = link_to t('destroy'), article, :confirm => 'Are you sure?', :method => :delete
+        = link_to t('destroy'), article, data: { confirm: 'Are you sure?' }, :method => :delete
   .clear

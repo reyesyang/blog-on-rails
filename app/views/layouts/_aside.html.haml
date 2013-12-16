@@ -5,11 +5,11 @@
       = link_to '吾', '/about'
       #passage
         - if logined?
-          = link_to '注销', logout_path, :confirm => 'Are you sure?', :method => :delete
+          = link_to '注销', logout_path, data: { confirm: 'Are you sure?' }, :method => :delete
 
 
   %section#aside_tags
-    - @tags = Tag.list(current_user)
+    - @tags = Tag.ordered.list(current_user)
     - if @tags.any?
       %ul.unstyled
         - @tags.each do |tag|

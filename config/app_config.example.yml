@@ -1,5 +1,6 @@
 default: &default
   secret_token:
+  secret_key_base:
   ga_account:
   disqus_developer: 1
   disqus_shortname:

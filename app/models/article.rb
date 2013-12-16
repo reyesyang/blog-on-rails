@@ -7,8 +7,6 @@ class Article < ActiveRecord::Base
   
   validates :title, :content, :presence => true
 
-  default_scope order('articles.id DESC')
-  
   self.per_page = 10
   @@original_tags = nil
 

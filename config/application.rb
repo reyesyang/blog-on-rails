@@ -10,6 +10,22 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+# Check app_config file and load APP_CONFIG
+app_config_file_path = File.expand_path '../app_config.yml', __FILE__
+
+if File.exists?(app_config_file_path)
+  APP_CONFIG = YAML.load_file(app_config_file_path)[Rails.env].with_indifferent_access
+else
+  raise StandardError, "Please create a config/app_config.yml file based on config/app_config.example.yml"
+end
+
+# Check database config file
+database_config_file_path = File.expand_path '../database.yml', __FILE__
+
+unless File.exists? database_config_file_path
+  raise StandardError, "Please create a config/database.yml file based on config/database.example.yml"
+end
+
 module Blog
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -49,5 +65,3 @@ module Blog
     config.assets.version = '1.0'
   end
 end
-
-APP_CONFIG = YAML.load_file("#{Rails.root}/config/app_config.yml")[Rails.env]

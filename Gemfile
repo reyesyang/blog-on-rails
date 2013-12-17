@@ -40,13 +40,8 @@ gem 'wmd-rails'
 gem 'redcarpet'
 gem "haml"
 
-# third party login
-gem 'omniauth'
-gem 'omniauth-google-oauth2'
-gem 'omniauth-github'
-
 # To use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.1.0'
+# gem 'bcrypt-ruby', '~> 3.1.0'
 
 # Use unicorn as the web server
 # gem 'unicorn'

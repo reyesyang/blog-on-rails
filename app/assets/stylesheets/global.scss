@@ -78,6 +78,7 @@ html {
 
 #passage {
   float: right;
+  padding-top: 3px;
 }
 
 .article {
@@ -192,6 +193,10 @@ article footer {
 #global-aside {
   float: left;
   position: fixed;
+
+  header {
+    width: 110px;
+  }
 }
 
 #aside_tags h2 {

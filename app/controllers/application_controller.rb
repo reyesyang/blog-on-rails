@@ -1,21 +1,20 @@
 # -*- encoding : utf-8 -*-
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  skip_before_filter :verify_authenticity_token, :only => :create
 
-  helper_method :current_user, :logined?
+  helper_method :current_user, :logged_in?
 
   def current_user
-    @current_user || User.find_by_id(session[:user_id])
+    @current_user ||= session[:email] ? User.new(session[:email]) : nil
   end
 
-  def logined?
+  def logged_in?
     !!current_user
   end
 
   private
 
   def require_admin
-    redirect_to root_path if !(logined? && current_user.admin?)
+    redirect_to root_path if !(logged_in? && current_user.admin?)
   end
 end

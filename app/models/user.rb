@@ -1,10 +1,10 @@
 # -*- encoding : utf-8 -*-
-require 'digest/sha2'
+class User
+  attr_accessor :email
 
-class User < ActiveRecord::Base
-  has_many :authorizations
-
-  validates :name, :email, :presence => true
+  def initialize(email)
+    @email = email
+  end
 
   def admin?
     email == APP_CONFIG['admin_email']

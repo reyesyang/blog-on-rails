@@ -7,10 +7,6 @@ default: &default
   default_title:
   default_description:
   admin_email:
-  google_client_id:
-  google_client_secret:
-  github_client_id:
-  github_client_secret:
 
 development:
   <<: *default

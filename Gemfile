@@ -39,6 +39,7 @@ gem 'will_paginate', '>=3.0.pre'
 gem 'wmd-rails'
 gem 'redcarpet'
 gem "haml"
+gem 'rails-i18n', '~>4.0.0'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.0'
@@ -57,4 +58,6 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'factory_girl_rails'
   gem 'pry-rails'
+
+  gem 'rspec-rails'
 end

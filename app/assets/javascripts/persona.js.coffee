@@ -3,7 +3,7 @@ $ () ->
   $logout_button = $("#logout-button")
 
   navigator.id.watch
-    loggedInUser: ($.cookie('email') || null)
+    loggedInUser: $.cookie('email') || null
     onlogin: (assertion) ->
       $.ajax
         type: 'POST'
@@ -13,8 +13,8 @@ $ () ->
         }
         success: (res, status, xhr) ->
           window.location.reload()
-        error: (res, status, xhr) ->
-          alert("Signin Failed!")
+        error: (xhr, status, error) ->
+          alert("Login Failed!")
 
     onlogout: () ->
       $.ajax
@@ -22,8 +22,8 @@ $ () ->
         url: '/logout.json',
         success: (res, status, xhr) ->
           window.location.reload()
-        error: (res, status, xhr) ->
-          alert("Signout Failed")
+        error: (xhr, status, error) ->
+          alert("Logout Failed")
 
   $login_button.on "click", (e) ->
     e.preventDefault()

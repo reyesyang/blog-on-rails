@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     uri = URI('https://verifier.login.persona.org/verify')
     response = Net::HTTP.post_form(uri,
                                    assertion: params[:assertion],
-                                   audience: 'http://localhost:3000')
+                                   audience: APP_CONFIG['origin'])
     
     result = case response
              when Net::HTTPSuccess

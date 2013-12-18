@@ -1,4 +1,5 @@
 default: &default
+  origin:
   secret_token:
   secret_key_base:
   ga_account:

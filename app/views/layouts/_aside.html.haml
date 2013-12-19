@@ -18,7 +18,7 @@
       %ul.unstyled
         - @tags.each do |tag|
           %li<
-            = link_to tag_path(tag), :class=>'aside_tag' do
+            = link_to tagging_path(tag), :class=>'aside_tag' do
               <span class='label'>#{tag.name}</span>
             %span x #{tag.articles_count}
     - else

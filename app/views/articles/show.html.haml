@@ -8,7 +8,7 @@
       %span.tags
         = t 'tags'
         - @article.tags.each do |tag|
-          = link_to tag_path(tag) do
+          = link_to tagging_path(tag) do
             %span.label #{tag.name}
     -if logged_in? && current_user.admin?
       %span.operation

@@ -71,6 +71,12 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def tagging
+    tag = Tag.find_by_name! params[:tag]
+    @articles = tag.articles.includes(:tags).paginate(page: params[:page])
+    render :index
+  end
+
   private
     def load_article_with_tags
       @article = Article.includes(:tags).find(params[:id])

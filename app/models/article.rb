@@ -10,7 +10,7 @@ class Article < ActiveRecord::Base
   self.per_page = 10
 
   def tag_list=(value)
-    tags = value.split(',').map{ |tag| tag.strip.downcase }.reject{ |t| t.blank? }
+    tags = value.split(',').map { |tag| tag.strip.downcase }.reject { |t| t.blank? }
 
     self.tags = if tags.include?('draft')
                   [Tag.find_or_create_by(name: 'draft')]

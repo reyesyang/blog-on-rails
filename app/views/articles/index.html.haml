@@ -4,7 +4,7 @@
       %a{class: "close", "data-dismiss" => "alert", href: "#"}×
       = raw flash[type.to_sym]
 
--if logined? && current_user.admin?
+-if logged_in? && current_user.admin?
   .top_operation= link_to t('new_article'), new_article_path
 
 - if @articles

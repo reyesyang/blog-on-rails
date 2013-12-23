@@ -9,10 +9,10 @@
       %span.tags
         = t 'tags'
         - article.tags.each do |tag|
-          = link_to  tag_path(tag) do
+          = link_to  tagging_path(tag) do
             %span.label #{tag.name}
-    -if logined? && current_user.admin?
+    -if logged_in? && current_user.admin?
       %span.operation
         = link_to t('edit'), edit_article_path(article)
-        = link_to t('destroy'), article, :confirm => 'Are you sure?', :method => :delete
+        = link_to t('destroy'), article, data: { confirm: 'Are you sure?' }, :method => :delete
   .clear

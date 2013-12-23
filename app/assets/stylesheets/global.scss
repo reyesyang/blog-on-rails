@@ -33,7 +33,7 @@ html {
   width: 60px;
   display: block;
   text-indent: -1000px;
-  background-image: url('/assets/logo.jpeg');
+  background-image: asset-url('logo.jpeg');
 }
 
 #me {
@@ -78,6 +78,7 @@ html {
 
 #passage {
   float: right;
+  padding-top: 3px;
 }
 
 .article {
@@ -192,6 +193,10 @@ article footer {
 #global-aside {
   float: left;
   position: fixed;
+
+  header {
+    width: 110px;
+  }
 }
 
 #aside_tags h2 {
@@ -223,7 +228,7 @@ footer {
 }
 
 #cc_icon {
-  margin: 0 0 -3px 0;
+  margin: -2px 0 0 0;
 }
 
 .code {

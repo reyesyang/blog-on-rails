@@ -4,17 +4,21 @@
     %h3#me
       = link_to '吾', '/about'
       #passage
-        - if logined?
-          = link_to '注销', logout_path, :confirm => 'Are you sure?', :method => :delete
+        - if logged_in?
+          = link_to '#', id: 'logout-button', class: 'persona-button dark', data: { confirm: '确定吗？' }  do
+            %span 退出
+        - else
+          = link_to '#', id: 'login-button', class: 'persona-button dark' do
+            %span 登录
 
 
   %section#aside_tags
-    - @tags = Tag.list(current_user)
+    - @tags = Tag.ordered.list(current_user)
     - if @tags.any?
       %ul.unstyled
         - @tags.each do |tag|
           %li<
-            = link_to tag_path(tag), :class=>'aside_tag' do
+            = link_to tagging_path(tag), :class=>'aside_tag' do
               <span class='label'>#{tag.name}</span>
             %span x #{tag.articles_count}
     - else

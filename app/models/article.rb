@@ -9,6 +9,8 @@ class Article < ActiveRecord::Base
 
   self.per_page = 10
 
+  scope :published, -> { joins(:tags).where("tags.name != ?", "draft").uniq }
+
   def tag_list=(value)
     tags = value.split(',').map { |tag| tag.strip.downcase }.reject { |t| t.blank? }
 

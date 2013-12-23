@@ -116,4 +116,13 @@ describe Article do
       it { should be_draft }
     end
   end
+
+  describe "published scope" do
+    it "return articles without tagged with 'draft'" do
+      normal_article = create :article
+      draft_article = create :article, tag_list: "draft"
+
+      expect(Article.published).to eq [normal_article]
+    end
+  end
 end

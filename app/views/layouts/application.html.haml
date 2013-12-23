@@ -8,7 +8,7 @@
     = csrf_meta_tag
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
-    = javascript_include_tag 'https://login.persona.org/include.js'
+    = javascript_include_tag Rails.env.test? ? 'stubbyid' : 'https://login.persona.org/include.js'
     = javascript_include_tag 'persona'
     = yield :head
     /[if lt IE 9]

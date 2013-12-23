@@ -11,9 +11,9 @@ class Tag < ActiveRecord::Base
 
   def self.list(user)
     if user && user.admin?
-      Tag.all
+      Tag.all.load
     else
-      Tag.where("name != 'draft'").all
+      Tag.where("name != 'draft'").load
     end
   end
 end

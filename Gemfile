@@ -56,9 +56,18 @@ gem 'rvm-capistrano'
 
 group :development, :test do
   gem 'quiet_assets'
-  gem 'factory_girl_rails'
   gem 'pry-rails'
 
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem "fakeweb"
   gem "shoulda-matchers"
+  gem "capybara"
+  gem "capybara-webkit"
+  gem "selenium-webdriver"
+  gem "launchy"
+  gem "database_cleaner"
 end

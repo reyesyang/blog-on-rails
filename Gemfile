@@ -45,7 +45,7 @@ gem 'rails-i18n', '~>4.0.0'
 # gem 'bcrypt-ruby', '~> 3.1.0'
 
 # Use unicorn as the web server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
 gem 'capistrano'

@@ -1,4 +1,5 @@
-source 'http://ruby.taobao.org'
+#source 'http://ruby.taobao.org'
+source 'https://rubygems.org'
 ruby "2.0.0"
 
 gem 'rails', '~> 4.0.0'
@@ -8,17 +9,14 @@ gem 'rails', '~> 4.0.0'
 
 gem 'mysql2'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 4.0.0'
-  gem 'coffee-rails', '~> 4.0.0'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', platforms: :ruby
-
-  gem 'uglifier', '>= 1.0.3'
-end
+# Previously the assets group existed to avoid unintended compilation-on-demand
+# in production. As Rails 4 doesn't behave like that anymore, it made sense to
+# remove the asset group.
+gem 'sass-rails',   '~> 4.0.0'
+gem 'coffee-rails', '~> 4.0.0'
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+gem 'therubyracer', platforms: :ruby
+gem 'uglifier', '>= 1.0.3'
 
 gem 'jquery-rails'
 
@@ -28,7 +26,6 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.5.1'
 
-gem 'execjs'
 gem 'twitter-bootstrap-rails'
 gem 'less-rails'
 # gem "acts_as_ferret", :git => "https://github.com/jkraemer/acts_as_ferret.git"
@@ -47,12 +44,13 @@ gem 'rails-i18n', '~>4.0.0'
 # Use unicorn as the web server
 gem 'unicorn'
 
-# Deploy with Capistrano
-gem 'capistrano'
-gem 'rvm-capistrano'
-
-# To use debugger
-# gem 'ruby-debug'
+group :development do
+  # Deploy with Capistrano
+  gem 'capistrano', '~> 3.0.0', require: false
+  gem 'capistrano-rvm', '~> 0.1.0', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rails', '~> 1.1.0', require: false
+end
 
 group :development, :test do
   gem 'quiet_assets'
@@ -60,13 +58,15 @@ group :development, :test do
 
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  
+  # Use debugger
+  # gem 'debugger', group: [:development, :test]
 end
 
 group :test do
   gem "fakeweb"
   gem "shoulda-matchers"
   gem "capybara"
-  gem "capybara-webkit"
   gem "selenium-webdriver"
   gem "launchy"
   gem "database_cleaner"

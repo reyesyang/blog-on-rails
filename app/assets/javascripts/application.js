@@ -8,6 +8,6 @@
 //= require jquery_ujs
 //= require jquery.cookie
 //= require twitter/bootstrap
-//= require global.js
 //= require timeago
 //= require jquery.autogrowtextarea
+//= require global.js

@@ -1,65 +1,56 @@
-# -*- encoding : utf-8 -*-
-set :user, "your"
-set :application, "blog"
+set :application, 'app_name'
+set :repo_url, "git@git-server:user/path-to-app.git"
+set :user, 'webuser'
+# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+set :branch, 'master'
 
-# If you use rvm, please uncomment the following 4 lines
-# require "rvm/capistrano"                  # Load RVM's capistrano plugin.
-# set :rvm_path, "/home/#{user}/.rvm"
-# set :rvm_bin_path, "/home/#{user}/.rvm/bin"        # Or whatever env you want it to run in.
-
-set :scm_username, "git"
-set :domain, "your"
-set :repository,  "your"
-# set :repository,  "#{scm_username}@#{domain}:#{application}.git"
-
+set :deploy_to, "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
 set :scm, :git
-set :branch, :master
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
-set :deploy_to, "/home/#{user}/apps/#{application}"
-set :deploy_via, :remote_cache
-set :use_sudo, false
 
-set :unicorn_config, "#{current_path}/config/unicorn.rb"
-set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
+# set :format, :pretty
+# set :log_level, :debug
+# set :pty, true
 
-role :web, domain                          # Your HTTP server, Apache/etc
-role :app, domain                          # This may be the same as your `Web` server
-role :db,  domain, :primary => true        # This is where Rails migrations will run
-# role :db,  "your slave db-server here"
+set :linked_files, %w{config/database.yml config/app_config.yml config/nginx.conf}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+set :keep_releases, 5
 
-# If you are using Passenger mod_rails uncomment this:
+set :unicorn_config, "#{fetch(:current_path)}/config/unicorn.rb"
+set :unicorn_pid, "#{fetch(:current_path)}/tmp/pids/unicorn.pid"
+
 namespace :deploy do
   desc "Start unicorn"
   task :start do
-    run "cd #{current_path} && RAILS_ENV=production bundle exec unicorn_rails -c #{unicorn_config} -D"
+    on roles(:app), in: :sequence, wait: 5 do
+      excute "cd #{current_path} && RAILS_ENV=production bundle exec unicorn_rails -c #{unicorn_config} -D"
+    end
   end
 
   desc "Stop unicorn"
   task :stop do
-    run "if [ -f #{unicorn_pid} ]; then kill -QUIT `cat #{unicorn_pid}`; fi"
+    on roles(:app), in: :sequence, wait: 5 do
+      excute "if [ -f #{unicorn_pid} ]; then kill -QUIT `cat #{unicorn_pid}`; fi"
+    end
   end
 
   desc "Restart unicorn"
   task :restart do
-    run "if [ -f #{unicorn_pid} ]; then kill -s USR2 `cat #{unicorn_pid}`; fi"
+    on roles(:app), in: :sequence, wait: 5 do
+      excute "if [ -f #{unicorn_pid} ]; then kill -s USR2 `cat #{unicorn_pid}`; fi"
+    end
   end
 
-  desc "Reload the database with seed data"
-  task :seed do
-    run "cd #{current_path}; rake db:seed RAILS_ENV=production"
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+      # Here we can do anything such as:
+      within release_path do
+        execute :rake, 'cache:clear'
+      end
+    end
   end
-  task :do do
-    run "echo $PATH"
-  end
+
+  after :finishing, 'deploy:cleanup'
+
 end
-
-after "deploy:update_code" do
-  run "cp #{deploy_to}/shared/config/*.yml #{release_path}/config" # So we need cp config files to share config folder manually first
-  run "cd #{release_path} && bundle install"
-  run "cd #{release_path}; RAILS_ENV=production rake assets:precompile"
-  sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
-end
-

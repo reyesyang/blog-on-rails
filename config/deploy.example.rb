@@ -17,28 +17,52 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 set :keep_releases, 5
 
-set :unicorn_config, "#{fetch(:current_path)}/config/unicorn.rb"
-set :unicorn_pid, "#{fetch(:current_path)}/tmp/pids/unicorn.pid"
+set :unicorn_config, "#{current_path}/config/unicorn.rb"
+set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
 
 namespace :deploy do
   desc "Start unicorn"
   task :start do
     on roles(:app), in: :sequence, wait: 5 do
-      excute "cd #{current_path} && RAILS_ENV=production bundle exec unicorn_rails -c #{unicorn_config} -D"
+      within current_path do
+        execute :bundle, "exec", "unicorn_rails -c #{fetch(:unicorn_config)} -E #{fetch(:rails_env)} -D"
+      end
     end
   end
 
   desc "Stop unicorn"
   task :stop do
     on roles(:app), in: :sequence, wait: 5 do
-      excute "if [ -f #{unicorn_pid} ]; then kill -QUIT `cat #{unicorn_pid}`; fi"
+      if test("[ -f #{fetch(:unicorn_pid)} ]")
+        execute :kill, "-QUIT", "`cat #{fetch(:unicorn_pid)}`"
+      end
     end
   end
 
   desc "Restart unicorn"
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      excute "if [ -f #{unicorn_pid} ]; then kill -s USR2 `cat #{unicorn_pid}`; fi"
+      if test("[ -f #{fetch(:unicorn_pid)} ]")
+        execute :kill, "-USR2", "`cat #{fetch(:unicorn_pid)}`"
+      end
+    end
+  end
+  
+  task :query_interactive do
+    on roles(:app) do
+      info capture("[[ $- == *i* ]] && echo 'Interactive' || echo 'Not interactive'")
+    end
+  end
+
+  task :query_login do
+    on roles(:app) do
+      info capture("shopt -q login_shell && echo 'Login shell' || echo 'Not login shell'")
+    end
+  end
+
+  task :query_path do
+    on roles(:app) do
+      info capture("echo $PATH")
     end
   end
 

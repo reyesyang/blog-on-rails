@@ -6,8 +6,10 @@ tmp/
 vendor/cache
 vendor/bundle
 package/
+
 config/database.yml
 config/app_config.yml
 config/deploy.rb
 config/deploy/production.rb
 config/nginx.conf
+config/unicorn.rb

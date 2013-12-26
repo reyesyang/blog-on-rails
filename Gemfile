@@ -1,5 +1,5 @@
-source 'http://ruby.taobao.org'
-# source 'https://rubygems.org'
+# source 'http://ruby.taobao.org'
+source 'https://rubygems.org'
 ruby "2.1.0"
 
 gem 'rails', '~> 4.0.0'
@@ -46,6 +46,9 @@ gem 'rails-i18n', '~>4.0.0'
 
 # Use unicorn as the web server
 gem 'unicorn'
+
+# Use for New Relic
+gem 'newrelic_rpm'
 
 group :development do
   # Deploy with Capistrano

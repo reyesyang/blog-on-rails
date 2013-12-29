@@ -52,7 +52,6 @@ module Blog
 
     # Enable the asset pipeline
     config.assets.enabled = true
-    
-    config.assets.precompile += %w(wmd-buttons.png wmd-editor.js wmd-editor.css persona.js)
+    config.assets.precompile += %w(wmd-buttons.png wmd-editor.js wmd-editor.css persona.js *.png *.jpg *.jpeg *.gif)
   end
 end

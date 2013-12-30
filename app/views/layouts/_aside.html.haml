@@ -5,7 +5,7 @@
       = link_to '吾', '/about'
       #passage
         - if logged_in?
-          = link_to '#', id: 'logout-button', class: 'persona-button dark', data: { confirm: '确定吗？' }  do
+          = link_to '#', id: 'logout-button', class: 'persona-button dark' do
             %span 退出
         - else
           = link_to '#', id: 'login-button', class: 'persona-button dark' do

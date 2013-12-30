@@ -31,4 +31,5 @@ $ () ->
 
   $logout_button.on 'click', (e) ->
     e.preventDefault()
+    return unless confirm("确定吗？")
     navigator.id.logout()

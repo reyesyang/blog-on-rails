@@ -6,8 +6,8 @@
     %meta{name: 'description', content: "#{@page_description || APP_CONFIG['default_description']}"}
     %meta{:'http-equiv' => 'X-UA-Compativle', content: 'IE=Edge'}
     = csrf_meta_tag
-    = stylesheet_link_tag 'application'
-    = javascript_include_tag 'application'
+    = stylesheet_link_tag 'application', data: { :'turbolinks-track' => true }
+    = javascript_include_tag 'application', data: { :'turbolinks-track' => true }
     = javascript_include_tag Rails.env.test? ? 'stubbyid' : 'https://login.persona.org/include.js'
     = javascript_include_tag 'persona'
     = yield :head

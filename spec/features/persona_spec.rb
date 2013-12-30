@@ -10,7 +10,7 @@ feature "Psersona" do
     expect(page).to have_content "登录"
   end
 
-  scenario "cancel sign out", js: true, focus: true do
+  scenario "cancel sign out", js: true do
     visit root_path
     sign_in APP_CONFIG["admin_email"]
     

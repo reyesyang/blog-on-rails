@@ -6,6 +6,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.turbolinks
+//= require turbolinks
 //= require jquery.cookie
 //= require twitter/bootstrap
 //= require timeago

@@ -3,7 +3,9 @@ require 'spec_helper'
 feature "Articles" do
   scenario "Post a new article", js: true do
     sign_in APP_CONFIG[:admin_email]
-    click_link "现在就发表一篇" 
+    click_link "现在就发表一篇"
+
+    sleep 1
     expect(current_path).to eq new_article_path
 
     article = build :article
@@ -31,9 +33,11 @@ feature "Articles" do
 
     sign_in APP_CONFIG[:admin_email]
     click_link article.title
+    sleep 1
     expect(current_path).to eq article_path(article)
 
     click_link "编辑"
+    sleep 1
     expect(current_path).to eq edit_article_path(article)
     
     within(".edit_article") do
@@ -58,6 +62,7 @@ feature "Articles" do
 
     sign_in APP_CONFIG[:admin_email]
     click_link article.title
+    sleep 1
     expect(current_path).to eq article_path(article)
 
     click_link "删除"

@@ -1,7 +1,3 @@
-$ () ->
-  $login_button = $("#login-button")
-  $logout_button = $("#logout-button")
-
   navigator.id.watch
     loggedInUser: $.cookie('email') || null
     onlogin: (assertion) ->
@@ -25,11 +21,11 @@ $ () ->
         error: (xhr, status, error) ->
           alert("Logout Failed")
 
-  $login_button.on "click", (e) ->
+  $(document).on "click", '#login-button', (e) ->
     e.preventDefault()
     navigator.id.request siteName: "Reyes Yang's Blog"
 
-  $logout_button.on 'click', (e) ->
+  $(document).on 'click', '#logout-button', (e) ->
     e.preventDefault()
     return unless confirm("确定吗？")
     navigator.id.logout()

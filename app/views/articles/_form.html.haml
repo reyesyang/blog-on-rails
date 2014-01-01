@@ -1,7 +1,3 @@
-- content_for :head do
-  = javascript_include_tag 'wmd-editor'
-  = stylesheet_link_tag 'wmd-editor'
-
 = form_for @article do |f|
   #edit-area
     .field= f.text_field :title

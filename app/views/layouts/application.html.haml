@@ -15,7 +15,7 @@
       %script{:src => "//html5shim.googlecode.com/svn/trunk/html5.js"}
     = render :partial => 'layouts/google_analytics'
 
-  %body
+  %body{id: "#{controller_name}-#{action_name}"}
     %section#main-wrapper
       = render :partial => 'layouts/aside'
       %section#main-content= yield

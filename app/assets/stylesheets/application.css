@@ -6,6 +6,7 @@
  *= require persona-buttons
  *= require bootstrap-rewrite
  *= require global
- *= require_self
  *= require bootstrap_and_overrides
+ *= require 'wmd/wmd'
+ *= require 'wmd-editor'
 */

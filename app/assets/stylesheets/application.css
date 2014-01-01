@@ -4,9 +4,9 @@
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require nprogress
  *= require persona-buttons
+ *= require bootstrap_and_overrides
  *= require bootstrap-rewrite
  *= require global
- *= require bootstrap_and_overrides
  *= require 'wmd/wmd'
  *= require 'wmd-editor'
 */

@@ -5,14 +5,14 @@
     %meta{:charset => 'utf-8'}
     %meta{:name => 'description', :content => "#{@page_description || APP_CONFIG['default_description']}"}
     = csrf_meta_tag
-    = stylesheet_link_tag 'application', data: { :'turbolink-track' => true }
-    = javascript_include_tag 'application', data: { :'turbolink-track' => true }
+    = stylesheet_link_tag 'application', data: { :'turbolinks-track' => true }
+    = javascript_include_tag 'application', data: { :'turbolinks-track' => true }
     = yield :head
     /[if lt IE 9]
       %script{:src => "//html5shim.googlecode.com/svn/trunk/html5.js"}
     = render :partial => 'layouts/google_analytics'
 
-  %body
+  %body{ id: "#{controller_name}-#{action_name}" }
     %section#wide-main-wrapper
       = yield
       .clearfix

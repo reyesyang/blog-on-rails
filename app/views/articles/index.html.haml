@@ -8,5 +8,5 @@
   .top_operation= link_to t('new_article'), new_article_path
 
 - if @articles
-  = render @articles
+  = render partial: 'article_summary', collection: @articles, as: :article
   = will_paginate @articles

@@ -1,7 +1,3 @@
-- cache article do
+- cache [article, :summary] do
   %article.article
     = render partial: 'article_header', object: article, as: :article
-    .article_content
-      ~ format_text @article.content
-
-  

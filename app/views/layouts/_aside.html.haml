@@ -15,4 +15,4 @@
   %section#aside_tags
     - cache cache_key_for_tags do
       %ul.unstyled
-        = render partial: 'tags/tag', collection: Tag.order(:name).all
+        = render partial: 'tags/tag', collection: Tag.order(:name)

@@ -39,7 +39,7 @@ gem 'will_paginate', '>=3.0.pre'
 # gem 'bootstrap-will_paginate'
 gem 'wmd-rails'
 gem 'redcarpet'
-gem "haml"
+gem "haml-rails"
 gem 'rails-i18n', '~>4.0.0'
 gem 'dalli'
 

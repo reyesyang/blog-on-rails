@@ -61,11 +61,10 @@ zh-CN:
   
   #global footer
   licence_prefix: 除特别说明外本站内容均采用
-  licence: 知识共享署名-相同方式共享 3.0 Unported许可协议
-  licence_link: http://creativecommons.org/licenses/by-sa/3.0/deed.zh
+  licence: 知识共享署名 4.0 国际许可协议
   licence_suffix: 进行许可。
   current_version: 本博客当前版本
-  copy_right: reyesyang.info
+  copy_right: reyesyang
 
   will_paginate:
     previous_label: "&laquo;"

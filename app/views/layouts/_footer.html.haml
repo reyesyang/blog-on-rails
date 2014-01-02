@@ -1,9 +1,10 @@
 %footer#global_footer
   #cc
     = t 'licence_prefix'
-    = link_to t('licence_link'), :rel => 'license', :target => '_blank' do
-      = image_tag '/images/cc_80x15.png', :alt => '知识共享许可协议', :id => 'cc_icon'
+    = link_to 'http://creativecommons.org/licenses/by/4.0/', :rel => 'license', :target => '_blank' do
+      = image_tag 'http://i.creativecommons.org/l/by/4.0/80x15.png', :alt => '知识共享许可协议', :id => 'cc_icon'
       %strong= t 'licence'
     = t 'licence_suffix'
   #copy<
-    &copy; #{DateTime.now.year} #{t 'copy_right'}
+    &copy; #{DateTime.now.year} &hearts; &nbsp;
+    = link_to t('copy_right'), '/about'

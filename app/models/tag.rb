@@ -9,11 +9,7 @@ class Tag < ActiveRecord::Base
     name
   end
 
-  def self.list(user)
-    if user && user.admin?
-      Tag.all.load
-    else
-      Tag.where("name != 'draft'").load
-    end
+  def draft?
+    name == 'draft'
   end
 end

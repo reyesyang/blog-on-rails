@@ -9,4 +9,5 @@
  *= require global
  *= require 'wmd/wmd'
  *= require 'wmd-editor'
+ *= require articles
 */

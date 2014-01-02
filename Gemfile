@@ -41,6 +41,7 @@ gem 'wmd-rails'
 gem 'redcarpet'
 gem "haml"
 gem 'rails-i18n', '~>4.0.0'
+gem 'dalli'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.0'

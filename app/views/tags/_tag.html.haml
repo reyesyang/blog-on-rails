@@ -1,0 +1,6 @@
+- cache tag do
+  %li{class: tag.draft? ? "tag admin" : "tag"}
+    = link_to tagging_path(tag), :class=>'aside_tag' do
+      %span{class: 'label'}= tag.name
+    %span.count
+      &times; #{tag.articles_count}

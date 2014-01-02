@@ -1,0 +1,23 @@
+.article {
+  .tags {
+    display: inline-block;
+    float: left;
+
+    span {
+      float: left;
+    }
+    
+    ul {
+      display: inline-block;
+      margin: 0;
+
+      .tag{
+        float: left; 
+
+        .count {
+          display: none;
+        }
+      }
+    }
+  }
+}

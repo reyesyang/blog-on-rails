@@ -45,6 +45,7 @@ module Blog
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    config.i18n.enforce_available_locales = true 
     config.i18n.default_locale = :"zh-CN"
 
     # Configure sensitive parameters which will be filtered from the log file.
@@ -53,5 +54,7 @@ module Blog
     # Enable the asset pipeline
     config.assets.enabled = true
     config.assets.precompile += %w(wmd-buttons.png persona.js *.png *.jpg *.jpeg *.gif)
+
+    config.cache_store = :mem_cache_store
   end
 end

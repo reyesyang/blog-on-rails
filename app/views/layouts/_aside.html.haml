@@ -13,13 +13,6 @@
 
 
   %section#aside_tags
-    - @tags = Tag.ordered.list(current_user)
-    - if @tags.any?
+    - cache cache_key_for_tags do
       %ul.unstyled
-        - @tags.each do |tag|
-          %li<
-            = link_to tagging_path(tag), :class=>'aside_tag' do
-              <span class='label'>#{tag.name}</span>
-            %span x #{tag.articles_count}
-    - else
-      No more tags now!
+        = render partial: 'tags/tag', collection: Tag.order(:name).all

@@ -1,18 +1,16 @@
-%article.article
-  %header
-    %h3.article_title
-      = link_to article.title, article_url(article)
-    %span.created_at<
-      = t 'post_at'
-      = article.created_at.in_time_zone(+8.hours).strftime('%D %T')
-    - if article.tags.any?
-      %span.tags
-        = t 'tags'
-        - article.tags.each do |tag|
-          = link_to  tagging_path(tag) do
-            %span.label #{tag.name}
-    -if logged_in? && current_user.admin?
-      %span.operation
+- cache article do
+  %article.article.clearfix
+    %header
+      %h3.article_title
+        = link_to article.title, article_url(article)
+      %span.created_at<
+        = t 'post_at'
+        = article.created_at.in_time_zone(+8.hours).strftime('%D %T')
+      - if article.tags.any?
+        .tags
+          %span= t 'tags'
+          %ul.unstyled
+            = render partial: 'tags/tag', collection: article.tags
+      %span.operation.admin
         = link_to t('edit'), edit_article_path(article)
         = link_to t('destroy'), article, data: { confirm: 'Are you sure?' }, :method => :delete
-  .clear

@@ -5,5 +5,9 @@ FactoryGirl.define do
     sequence(:title) { |n| "artile title #{n}" }
     content { 'a' * 20 }
     tag_list 'tag1,tag2'
+
+    factory :draft_article do
+      tag_list "draft"
+    end
   end
 end

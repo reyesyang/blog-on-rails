@@ -18,6 +18,7 @@ class SessionsController < ApplicationController
     if logged_in
       session[:email] = result[:email]
       cookies[:email] = result[:email]
+      cookies[:admin] = current_user.admin?
     end
 
     respond_to do |format|
@@ -25,9 +26,10 @@ class SessionsController < ApplicationController
     end
   end
 
-  def destroy 
+  def destroy
     session[:email] = nil
     cookies.delete :email
+    cookies.delete :admin
 
     respond_to do |format|
       format.json { render nothing: true, status: 204 }

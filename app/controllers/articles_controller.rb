@@ -29,12 +29,13 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @page_title = "文章 - #{@article.title}"
+    raise ActiveRecord::RecordNotFound if !current_user.try(:admin?) && @article.draft?
+    @page_title = "#{@article.title}"
     @page_description = @article.title
   end
 
   def edit
-    @page_title = "编辑文章 - #{@article.title}"
+    @page_title = "#{@article.title}"
 
     render layout: "wide"
   end
@@ -56,7 +57,10 @@ class ArticlesController < ApplicationController
 
   def tagging
     tag = Tag.find_by_name! params[:tag]
+    raise ActiveRecord::RecordNotFound if tag.draft? && !current_user.try(:admin?)
+
     @articles = tag.articles.includes(:tags).paginate(page: params[:page])
+    @page_title = "#{tag.name} 相关文章"
     render :index
   end
 

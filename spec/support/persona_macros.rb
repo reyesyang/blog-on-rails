@@ -16,8 +16,6 @@ module PersonaMacros
     alert = page.driver.browser.switch_to.alert
     alert.send_keys email
     alert.accept
-    #page.driver.js_prompt_input = email
-    #page.driver.accept_js_prompts!
   end
 
   def sign_out
@@ -25,6 +23,5 @@ module PersonaMacros
 
     alert = page.driver.browser.switch_to.alert
     alert.accept
-    # page.driver.accept_js_comfirms!
   end
 end

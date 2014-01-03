@@ -15,6 +15,6 @@ class ApplicationController < ActionController::Base
   private
 
   def require_admin
-    redirect_to root_path if !(logged_in? && current_user.admin?)
+    redirect_to root_path if !current_user.try(:admin?)
   end
 end

@@ -28,6 +28,7 @@ RSpec.configure do |config|
   # config.mock_with :rr
   
   config.include FactoryGirl::Syntax::Methods
+  config.include ShowMeTheCookies, type: :feature
   config.include PersonaMacros
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
@@ -44,6 +45,7 @@ RSpec.configure do |config|
   end
 
   config.after(:each) do
+    page.execute_script('navigator.id.logout()') if example.metadata[:js]
     DatabaseCleaner.clean
   end
 

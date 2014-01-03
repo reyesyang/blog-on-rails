@@ -63,6 +63,7 @@ end
 group :development, :test do
   gem 'quiet_assets'
   gem 'pry-rails'
+  gem 'pry-debugger'
 
   gem 'rspec-rails'
   gem 'factory_girl_rails'
@@ -78,5 +79,6 @@ group :test do
   gem "selenium-webdriver"
   gem "launchy"
   gem "database_cleaner"
+  gem "show_me_the_cookies"
   gem "simplecov", require: false
 end

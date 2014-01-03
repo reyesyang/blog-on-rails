@@ -2,7 +2,7 @@
 %html
   %head
     %meta{charset: 'utf-8'}
-    %title= "#{@page_title + ' - ' if @page_title}" + APP_CONFIG['default_title']
+    %title= "#{APP_CONFIG['default_title']}#{' | ' + @page_title if @page_title}"
     %meta{name: 'description', content: "#{@page_description || APP_CONFIG['default_description']}"}
     %meta{:'http-equiv' => 'X-UA-Compativle', content: 'IE=Edge'}
     = csrf_meta_tag

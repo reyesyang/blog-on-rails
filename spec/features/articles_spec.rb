@@ -1,7 +1,109 @@
 require 'spec_helper'
 
 feature "Articles" do
-  scenario "Post a new article", js: true do
+  given(:admin_email) { APP_CONFIG[:admin_email] }
+  given(:normal_user_email) { 'normal_user@example.com' }
+
+  scenario "Anonymous user should not see draft articles", js: true do
+    article = create :article
+    draft_article = create :draft_article
+
+    visit root_path
+
+    expect(page).to have_content article.title
+    article.tags.each do |tag|
+      expect(page).to have_link tag.name
+    end
+
+    expect(page).to_not have_content draft_article.title
+    expect(page).to_not have_link 'draft'
+
+    click_link article.title
+    expect(page).to_not have_link 'draft'
+  end
+
+  scenario "Normal user should not see draft articles", js: true do
+    article = create :article
+    draft_article = create :draft_article
+
+    sign_in normal_user_email
+
+    expect(page).to have_content article.title
+    article.tags.each do |tag|
+      expect(page).to have_link tag.name
+    end
+
+    expect(page).to_not have_content draft_article.title
+    expect(page).to_not have_link 'draft'
+
+    click_link article.title
+    expect(page).to_not have_link 'draft'
+  end
+
+  scenario "Admin user should see draft articles", js: true do
+    article = create :article
+    draft_article = create :draft_article
+
+    sign_in admin_email
+
+    expect(page).to have_content article.title
+    article.tags.each do |tag|
+      expect(page).to have_link tag.name
+    end
+
+    expect(page).to have_content draft_article.title
+    expect(page).to have_link 'draft'
+
+    click_link article.title
+    expect(page).to have_link 'draft'
+  end
+  
+  scenario "Anonymous user should not see article operation links", js: true do
+    article = create :article
+    draft_article = create :draft_article
+
+    visit root_path
+
+    expect(page).to_not have_link '现在就发表一篇'
+    expect(page).to_not have_link '编辑'
+    expect(page).to_not have_link '删除'
+
+    click_link article.title
+    expect(page).to_not have_link '编辑'
+    expect(page).to_not have_link '删除'
+  end
+  
+  scenario "Normal user should not see article operation links", js: true do
+    article = create :article
+    draft_article = create :draft_article
+
+    sign_in normal_user_email
+
+    expect(page).to_not have_link '现在就发表一篇'
+    expect(page).to_not have_link '编辑'
+    expect(page).to_not have_link '删除'
+
+    click_link article.title
+    expect(page).to_not have_link '编辑'
+    expect(page).to_not have_link '删除'
+  end
+  
+  scenario "Admin user should see article operation links", js: true do
+    article = create :article
+    draft_article = create :draft_article
+
+    sign_in admin_email
+
+    expect(page).to have_link '现在就发表一篇'
+    expect(page).to have_link '编辑'
+    expect(page).to have_link '删除'
+
+    click_link article.title
+    expect(page).to have_link '编辑'
+    expect(page).to have_link '删除'
+  end
+
+  scenario "Admin post a new article", js: true do
     sign_in APP_CONFIG[:admin_email]
     click_link "现在就发表一篇"
 
@@ -23,12 +125,9 @@ feature "Articles" do
       expect(page).to have_content tag_name
     end
     expect(page).to have_content article.content
-
-    sign_out
   end
 
-
-  scenario "Edit a exist article", js: true do
+  scenario "Admin edit a exist article", js: true do
     article = create :article
 
     sign_in APP_CONFIG[:admin_email]
@@ -53,11 +152,9 @@ feature "Articles" do
       expect(page).to have_content tag_name
     end
     expect(page).to have_content article.content
-
-    sign_out
   end
 
-  scenario "Delete a exist article", js: true do
+  scenario "Admin delete a exist article", js: true do
     article = create :article
 
     sign_in APP_CONFIG[:admin_email]
@@ -71,7 +168,5 @@ feature "Articles" do
     confirm.accept
 
     expect(current_path).to eq articles_path
-
-    sign_out
   end
 end

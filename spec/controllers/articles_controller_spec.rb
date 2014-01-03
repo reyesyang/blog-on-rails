@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe ArticlesController do
+  let(:admin_email) { APP_CONFIG[:admin_email] }
   let(:normal_user_email) { "normal_user@example.com" }
 
   shared_examples "permission control" do
@@ -11,7 +12,7 @@ describe ArticlesController do
 
   describe "GET #index" do
     let!(:normal_article) { create :article }
-    let!(:draft_article) { create :article, tag_list: "draft" }
+    let!(:draft_article) { create :draft_article }
 
     shared_examples "for all user" do
       it "page title set to '首页'" do
@@ -149,13 +150,16 @@ describe ArticlesController do
   end
 
   describe "GET #show" do
+    let(:article) { create :article }
+    let(:draft_article) { create :draft_article }
+
     shared_examples "for all user" do
       it "get @article" do
         expect(assigns[:article]).to eq article
       end
 
       it "set page title" do
-        expect(assigns[:page_title]).to eq "文章 - #{assigns[:article].title}"
+        expect(assigns[:page_title]).to eq assigns[:article].title
       end
 
       it "render show page" do
@@ -163,12 +167,19 @@ describe ArticlesController do
       end
     end
 
-    let(:article) { create :article }
+    shared_examples "for no or normal user login" do
+      it "raise ActiveRecord::RecordNotFound error when show draft article" do
+        expect do
+          get :show, id: draft_article
+        end.to raise_error ActiveRecord::RecordNotFound
+      end
+    end
 
     context "when no user sign in" do
       before { get :show, id: article }
 
       it_behaves_like "for all user"
+      it_behaves_like "for no or normal user login"
     end
 
     context "when sign in with normal user" do
@@ -178,15 +189,29 @@ describe ArticlesController do
       end
      
       it_behaves_like "for all user"
+      it_behaves_like "for no or normal user login"
     end
 
     context "when sign in with admin" do
-      before do
-        set_user_session APP_CONFIG[:admin_email]
-        get :show, id: article
+      context "show normal article" do
+        before do
+          set_user_session APP_CONFIG[:admin_email]
+          get :show, id: article
+        end
+
+        it_behaves_like "for all user"
       end
 
-      it_behaves_like "for all user"
+      context "show draft article" do
+        before do
+          set_user_session APP_CONFIG[:admin_email]
+          get :show, id: draft_article
+        end
+
+        it_behaves_like "for all user" do
+          let(:article) { draft_article }
+        end
+      end
     end
   end
 
@@ -219,7 +244,7 @@ describe ArticlesController do
       end
 
       it "set page title" do
-        expect(assigns[:page_title]).to eq "编辑文章 - #{assigns[:article].title}"
+        expect(assigns[:page_title]).to eq assigns[:article].title
       end
 
       it "render edit page" do
@@ -322,6 +347,66 @@ describe ArticlesController do
         delete :destroy, id: article
 
         expect(response).to redirect_to articles_path
+      end
+    end
+  end
+
+  describe "GET #tagging" do
+    let!(:article) { create :article }
+    let!(:draft_article) { create :draft_article }
+
+    shared_examples "for all user" do
+      it "set page title" do
+        get :tagging, tag: tag_name
+        expect(assigns[:page_title]).to eq "#{tag_name} 相关文章"
+      end
+      
+      it "set @articles when tag is not 'draft'" do
+        get :tagging, tag: tag_name
+        expect(assigns[:articles]).to eq [article]
+      end
+
+      it "render index" do
+        get :tagging, tag: tag_name
+        expect(response).to render_template :index
+      end
+    end
+
+    shared_examples "for no or normal user login" do
+      it "set @articles to empty array when tag is 'draft'" do
+        expect do
+          get :tagging, tag: 'draft'
+        end.to raise_error ActiveRecord::RecordNotFound
+      end
+    end
+
+    context "when no user login" do
+      it_behaves_like "for all user" do
+        let(:tag_name) { article.tags[0].name }
+      end
+      it_behaves_like "for no or normal user login"
+    end
+
+    context "when sign in with normal user" do
+      before { set_user_session normal_user_email }
+
+      it_behaves_like "for all user" do
+        let(:tag_name) { article.tags[0].name }
+      end
+      it_behaves_like "for no or normal user login"
+    end
+
+    context "when sign in with admin" do
+      before { set_user_session admin_email }
+
+      it_behaves_like "for all user" do
+        let(:tag_name) { article.tags[0].name }
+      end
+
+      it "set @articles when tag is 'draft'" do
+        get :tagging, tag: 'draft'
+
+        expect(assigns[:articles]).to eq [draft_article]
       end
     end
   end

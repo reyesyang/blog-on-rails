@@ -11,10 +11,22 @@ describe Article do
   describe "assosiations" do
     it { should have_many :taggings }
     it { should have_many :tags }
+
+    it "touch related tag when destroy a article", f: true do
+      article = create :article
+      tag = article.tags.first.reload
+      tag_articles_count = tag.articles_count
+      tag_updated_at = tag.updated_at
+
+      sleep 1
+      article.destroy
+      expect(tag.reload.articles_count).to eq (tag_articles_count - 1)
+      expect(tag.updated_at).to be > tag_updated_at
+    end
   end
 
   describe '#tag_list' do
-    subject!(:article) { create :article }
+    subject!(:article) { create :article, tag_list: 'tag1,tag2' }
 
     context "assign to default value 'tag1,tag2'" do
       it "Tag's count is 2" do

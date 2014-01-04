@@ -59,7 +59,7 @@ class ArticlesController < ApplicationController
     tag = Tag.find_by_name! params[:tag]
     raise ActiveRecord::RecordNotFound if tag.draft? && !current_user.try(:admin?)
 
-    @articles = tag.articles.includes(:tags).paginate(page: params[:page])
+    @articles = tag.articles.order('id DESC').paginate(page: params[:page])
     @page_title = "#{tag.name} 相关文章"
     render :index
   end

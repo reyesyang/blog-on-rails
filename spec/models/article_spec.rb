@@ -12,14 +12,28 @@ describe Article do
     it { should have_many :taggings }
     it { should have_many :tags }
 
-    it "touch related tag when destroy a article", f: true do
-      article = create :article
-      tag = article.tags.first.reload
+    it "touch related tag when destroy a article" do
+      article = create :article, tag_list: 'tag1'
+      tag = Tag.find_by_name 'tag1'
       tag_articles_count = tag.articles_count
       tag_updated_at = tag.updated_at
 
       sleep 1
       article.destroy
+      expect(tag.reload.articles_count).to eq (tag_articles_count - 1)
+      expect(tag.updated_at).to be > tag_updated_at
+    end
+
+    it "touch related article and tag when edit a article's tag_list" do
+      article = create :article, tag_list: 'tag1,tag2'
+      article_updated_at = article.updated_at
+      tag = Tag.find_by_name 'tag2'
+      tag_articles_count = tag.articles_count
+      tag_updated_at = tag.updated_at
+
+      sleep 1
+      article.update_attribute :tag_list, 'tag1'
+      expect(article.reload.updated_at).to be > article_updated_at
       expect(tag.reload.articles_count).to eq (tag_articles_count - 1)
       expect(tag.updated_at).to be > tag_updated_at
     end

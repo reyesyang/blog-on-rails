@@ -1,7 +1,10 @@
 # -*- encoding : utf-8 -*-
 class Article < ActiveRecord::Base
+  # :dependent used to destroy taggings when article was destroyed
   has_many :taggings, dependent: :destroy
-  has_many :tags, through: :taggings
+
+  # :after_remove used to update article and tag when tag_list was edited
+  has_many :tags, through: :taggings, after_remove: proc { |article, tag| article.touch; tag.touch  }
   
   validates :title, :content, :presence => true
   validates :title, uniqueness: true

@@ -24,7 +24,7 @@ describe Article do
       expect(tag.updated_at).to be > tag_updated_at
     end
 
-    it "touch related article and tag when edit a article's tag_list" do
+    it "touch related article and tag when remove a tag from tag_list" do
       article = create :article, tag_list: 'tag1,tag2'
       article_updated_at = article.updated_at
       tag = Tag.find_by_name 'tag2'
@@ -36,6 +36,15 @@ describe Article do
       expect(article.reload.updated_at).to be > article_updated_at
       expect(tag.reload.articles_count).to eq (tag_articles_count - 1)
       expect(tag.updated_at).to be > tag_updated_at
+    end
+
+    it "touch related article when add a tag to tag_list" do
+      article = create :article, tag_list: 'tag1'
+      article_updated_at = article.updated_at
+
+      sleep 1
+      article.update_attribute :tag_list, 'tag1,tag2'
+      expect(article.reload.updated_at).to be > article_updated_at
     end
   end
 

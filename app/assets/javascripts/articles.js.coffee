@@ -1,5 +1,4 @@
 init_wmd_editor = ->
-  console.log 'init_wmd_editor'
   new WMDEditor
     input: "wmd",
     button_bar: "wmd-button-bar",

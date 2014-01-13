@@ -4,7 +4,7 @@
       = link_to article.title, article_url(article)
     %span.created_at<
       = t 'post_at'
-      = article.created_at.in_time_zone(+8.hours).strftime('%D %T')
+      = time_tag article.created_at.to_date
     - if article.tags.any?
       .tags
         %span= t 'tags'

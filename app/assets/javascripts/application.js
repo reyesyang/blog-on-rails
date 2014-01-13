@@ -8,9 +8,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery.turbolinks
-//= require jquery.cookie
 //= require twitter/bootstrap
-//= require timeago
+//= require jquery.cookie
 //= require jquery.autogrowtextarea
 //= require nprogress
 //= require global

@@ -1,7 +1,7 @@
 - cache [article, :header] do
   %header.clearfix
     %h3.article_title
-      = link_to article.title, article_url(article)
+      = link_to article.title, article_path(article)
     %span.created_at<
       = t 'post_at'
       = time_tag article.created_at.to_date

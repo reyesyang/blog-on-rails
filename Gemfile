@@ -1,6 +1,5 @@
-# source 'http://ruby.taobao.org'
-source 'https://rubygems.org'
-ruby "2.1.0"
+source 'http://ruby.taobao.org'
+# source 'https://rubygems.org'
 
 gem 'rails', '~> 4.0.0'
 
@@ -63,7 +62,7 @@ end
 group :development, :test do
   gem 'quiet_assets'
   gem 'pry-rails'
-  gem 'pry-debugger'
+  gem 'pry-byebug'
 
   gem 'rspec-rails'
   gem 'factory_girl_rails'

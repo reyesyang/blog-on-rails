@@ -42,7 +42,7 @@ GEM
     capistrano-rails (1.1.0)
       capistrano (>= 3.0.0)
       capistrano-bundler (>= 1.0.0)
-    capistrano-rvm (0.1.0)
+    capistrano-rbenv (2.0.0)
       capistrano (~> 3.0)
       sshkit (~> 1.2.0)
     capybara (2.2.0)
@@ -242,7 +242,7 @@ DEPENDENCIES
   capistrano (~> 3.0.0)
   capistrano-bundler
   capistrano-rails (~> 1.1.0)
-  capistrano-rvm (~> 0.1.0)
+  capistrano-rbenv (~> 2.0)
   capybara
   coffee-rails (~> 4.0.0)
   dalli

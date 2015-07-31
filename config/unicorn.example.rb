@@ -20,14 +20,14 @@ worker_processes 2
 # user, do this to switch euid/egid in the workers (also chowns logs):
 # user "unprivileged_user", "unprivileged_group"
 
-app_root = File.expand_path("../..", __FILE__)
+app_root = "/srv/www/blog/current"
 # Help ensure your application will always spawn in the symlinked
 # "current" directory that Capistrano sets up.
 working_directory app_root # available in 0.94.0+
 
 # listen on both a Unix domain socket and a TCP port,
 # we use a shorter backlog for quicker failover when busy
-listen "/tmp/unicorn.your-app.sock", :backlog => 64
+listen "#{app_root}/tmp/sockets/unicorn.sock", :backlog => 64
 listen 8080, :tcp_nopush => true
 
 # nuke workers after 30 seconds instead of 60 seconds (the default)

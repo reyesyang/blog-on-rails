@@ -1,10 +1,10 @@
-set :application, 'app_name'
+set :application, 'blog'
 set :repo_url, "git@git-server:user/path-to-app.git"
 set :user, 'webuser'
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 set :branch, 'master'
 
-set :deploy_to, "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
+set :deploy_to, "/srv/www/#{fetch(:application)}"
 set :scm, :git
 
 # set :format, :pretty

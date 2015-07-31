@@ -1,5 +1,5 @@
 GEM
-  remote: http://ruby.taobao.org/
+  remote: https://ruby.taobao.org/
   specs:
     actionmailer (4.0.2)
       actionpack (= 4.0.2)
@@ -96,7 +96,7 @@ GEM
       railties (>= 3.1.0)
       turbolinks
     json (1.8.1)
-    kgio (2.8.1)
+    kgio (2.9.3)
     launchy (2.4.2)
       addressable (~> 2.3)
     less (2.4.0)
@@ -132,7 +132,7 @@ GEM
       pry (>= 0.9.10)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
-    rack (1.5.2)
+    rack (1.5.5)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.2)
@@ -151,7 +151,7 @@ GEM
       activesupport (= 4.0.2)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    raindrops (0.12.0)
+    raindrops (0.15.0)
     rake (10.1.1)
     redcarpet (3.0.0)
     ref (1.0.5)
@@ -224,7 +224,7 @@ GEM
     uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    unicorn (4.7.0)
+    unicorn (4.9.0)
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)

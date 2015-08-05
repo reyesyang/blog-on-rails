@@ -1,7 +1,12 @@
 set :application, 'blog'
-set :repo_url, "git@git-server:user/path-to-app.git"
 set :user, 'webuser'
-# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+
+set :ssh_options, {
+  user: fetch(:user),
+  forward_agent: true
+}
+
+set :repo_url, "git@git-server:user/path-to-app.git"
 set :branch, 'master'
 
 set :deploy_to, "/srv/www/#{fetch(:application)}"

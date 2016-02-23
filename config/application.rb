@@ -53,7 +53,7 @@ module Blog
 
     # Enable the asset pipeline
     config.assets.enabled = true
-    config.assets.precompile += %w(wmd-buttons.png persona.js *.png *.jpg *.jpeg *.gif)
+    config.assets.precompile += %w(wmd-buttons.png *.png *.jpg *.jpeg *.gif)
 
     config.cache_store = :mem_cache_store
   end

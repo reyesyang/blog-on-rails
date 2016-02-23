@@ -7,9 +7,9 @@ module PersonaMacros
     require 'fakeweb'
 
     visit root_path
-    FakeWeb.register_uri(:post, "https://verifier.login.persona.org/verify",
-                         body: { status: "okay", email: email }.to_json,
-                         status: ["200", "OK"])
+    # FakeWeb.register_uri(:post, "https://verifier.login.persona.org/verify",
+    #                      body: { status: "okay", email: email }.to_json,
+    #                      status: ["200", "OK"])
 
     click_link '登录'
 

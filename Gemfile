@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://ruby.taobao.org/'
 
 gem 'rails', '~> 4.0.0'
 
@@ -49,6 +49,9 @@ gem 'unicorn'
 
 # Use for New Relic
 gem 'newrelic_rpm'
+
+gem 'omniauth'
+gem 'omniauth-github'
 
 group :development do
   # Deploy with Capistrano

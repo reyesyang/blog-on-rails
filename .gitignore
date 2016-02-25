@@ -14,3 +14,5 @@ config/deploy/production.rb
 config/nginx.conf
 config/unicorn.rb
 config/newrelic.yml
+
+.env*

@@ -69,6 +69,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   
+  gem 'dotenv'
   # Use debugger
   # gem 'debugger', group: [:development, :test]
 end

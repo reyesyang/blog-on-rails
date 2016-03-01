@@ -2,7 +2,7 @@
 Blog::Application.routes.draw do
   root to: 'articles#index'
 
-  post '/login', to: 'sessions#create'
+  get '/auth/:provider/callback', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get "about" => "users#about"
 

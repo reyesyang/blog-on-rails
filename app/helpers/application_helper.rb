@@ -21,6 +21,6 @@ module ApplicationHelper
 
   def cache_key_for_tags
     last_updated_at = Tag.maximum(:updated_at).try(:utc).try(:to_s, :number)
-    "tags-#{last_updated_at}"
+    "tags-#{last_updated_at}-v1"
   end
 end

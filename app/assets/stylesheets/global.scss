@@ -29,11 +29,16 @@ html {
 }
 
 #logo {
+  margin: 0 auto;
   height: 60px;
   width: 60px;
   display: block;
   text-indent: -1000px;
   background-image: asset-url('logo.jpeg');
+  border-radius: 30px;
+  border-color: silver;
+  border-width: 1px;
+  border-style: solid;
 }
 
 #me {

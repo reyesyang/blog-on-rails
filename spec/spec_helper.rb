@@ -1,7 +1,4 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-require 'simplecov'
-SimpleCov.start 'rails'
-
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
@@ -44,7 +41,6 @@ RSpec.configure do |config|
   end
 
   config.after(:each) do
-    page.execute_script('navigator.id.logout()') if example.metadata[:js]
     DatabaseCleaner.clean
   end
 
@@ -62,4 +58,6 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  config.treat_symbols_as_metadata_keys_with_true_values = true
 end

@@ -82,5 +82,5 @@ group :test do
   gem "launchy"
   gem "database_cleaner"
   gem "show_me_the_cookies"
-  gem "simplecov", require: false
+  # gem "simplecov", require: false
 end

@@ -1,0 +1,12 @@
+language: ruby
+
+rvm:
+ - "2.1.2"
+
+services:
+  - mysql
+
+before_script:
+  - mysql -e 'create database blog_test;'
+
+script: bundle exec rspec spec
